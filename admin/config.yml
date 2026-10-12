@@ -9,53 +9,80 @@ public_folder: "assets/images"
 
 collections:
   - name: "operators"
-    label: "Entities / Operators"
+    label: "Operators"
     folder: "content/operators"
     create: true
     slug: "{{slug}}"
     format: "json"
     extension: "json"
     fields:
-      - { label: "Entity ID", name: "id", widget: "string" }
+      - { label: "Operator ID", name: "id", widget: "string" }
       - { label: "Operator Name", name: "name", widget: "string" }
-      - { label: "Designation / Title", name: "title", widget: "string" }
-      - { label: "Model Code", name: "code", widget: "string" }
-      - { label: "Entity Type", name: "type", widget: "select", options: ["DIVINE", "DROID"] }
-      - { label: "Price (Credits / Lumina)", name: "price", widget: "number", value_type: "int" }
-      - { label: "Durability / Integrity (%)", name: "durability", widget: "number", default: 95 }
-      - { label: "Hero / Cutout Image", name: "image", widget: "image" }
-      - { label: "Slogan / Quote", name: "quote", widget: "string" }
-      - { label: "Bio & Tactical Dossier", name: "lore", widget: "text" }
-      - label: "In-Game Combat Stats"
-        name: "stats"
-        widget: "object"
-        fields:
-          - { label: "STR (Strength)", name: "str", widget: "number", default: 90 }
-          - { label: "AGI (Agility)", name: "agi", widget: "number", default: 92 }
-          - { label: "INT (Intelligence)", name: "int", widget: "number", default: 88 }
-          - { label: "PWR (Psionic Power)", name: "pwr", widget: "number", default: 95 }
-          - { label: "DEF (Defense)", name: "def", widget: "number", default: 85 }
-          - { label: "SYNC (Neural Resonance)", name: "sync", widget: "number", default: 98 }
-      - label: "Special Abilities"
-        name: "abilities"
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Average Rating (out of 5)", name: "rating", widget: "number", value_type: "float", default: 4.5 }
+      - { label: "Rating Count", name: "ratingCount", widget: "number", value_type: "int", default: 1200 }
+      - { label: "Favorites Count", name: "favorites", widget: "number", value_type: "int", default: 523100 }
+      - label: "Operator Versions"
+        name: "versions"
         widget: "list"
         fields:
-          - { label: "Ability Name", name: "name", widget: "string" }
-          - { label: "Description", name: "desc", widget: "string" }
+          - { label: "Version ID (e.g. dg, wb)", name: "versionId", widget: "string" }
+          - { label: "Version Name", name: "versionName", widget: "string" }
+          - { label: "Model Code", name: "code", widget: "string" }
+          - { label: "Tag / Persona Style", name: "tag", widget: "string", default: "Tactical" }
+          - { label: "Acquisition Price ($ or Credits)", name: "price", widget: "number", value_type: "int" }
+          - { label: "Character Cutout Image", name: "image", widget: "image" }
+          - { label: "Box / Packaging Image", name: "boxImage", widget: "image" }
+          - { label: "Quote / Motto", name: "quote", widget: "string" }
+          - { label: "Overview & Description", name: "description", widget: "text" }
+          - label: "RPG Combat Stats"
+            name: "stats"
+            widget: "object"
+            fields:
+              - { label: "STR", name: "str", widget: "number", default: 90 }
+              - { label: "AGI", name: "agi", widget: "number", default: 90 }
+              - { label: "INT", name: "int", widget: "number", default: 90 }
+              - { label: "PWR", name: "pwr", widget: "number", default: 90 }
+              - { label: "DEF", name: "def", widget: "number", default: 90 }
+              - { label: "SYNC", name: "sync", widget: "number", default: 90 }
+          - label: "CV & Dossier Credentials"
+            name: "cv"
+            widget: "object"
+            fields:
+              - { label: "Learning Model", name: "learningModel", widget: "string" }
+              - { label: "Generation", name: "generation", widget: "string" }
+              - { label: "Activation Date", name: "activationDate", widget: "string" }
+              - { label: "Specializations", name: "specializations", widget: "list" }
+              - label: "Work Experience"
+                name: "workExperience"
+                widget: "list"
+                fields:
+                  - { label: "Role", name: "role", widget: "string" }
+                  - { label: "Organization", name: "org", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "string" }
+              - { label: "Certifications", name: "certifications", widget: "list" }
+          - label: "Combat & Operational Abilities"
+            name: "abilities"
+            widget: "list"
+            fields:
+              - { label: "Ability Name", name: "name", widget: "string" }
+              - { label: "Description", name: "desc", widget: "string" }
 
-  - name: "missions"
-    label: "Dispatch Missions"
-    folder: "content/missions"
+  - name: "posts"
+    label: "News & PR Blog"
+    folder: "content/posts"
     create: true
     slug: "{{slug}}"
     format: "json"
     extension: "json"
     fields:
-      - { label: "Mission ID", name: "id", widget: "string" }
-      - { label: "Operation Codename", name: "title", widget: "string" }
-      - { label: "Sector", name: "sector", widget: "string" }
-      - { label: "Difficulty Tier", name: "difficulty", widget: "select", options: ["RANK C", "RANK B", "RANK A", "RANK S", "RANK EX"] }
-      - { label: "Duration (Minutes)", name: "duration_minutes", widget: "number", default: 30 }
-      - { label: "Exp / Reward Credits", name: "reward_credits", widget: "number", default: 2500 }
-      - { label: "Preferred Entity Class", name: "preferred_class", widget: "select", options: ["ANY", "DIVINE", "DROID"] }
-      - { label: "Mission Briefing", name: "briefing", widget: "text" }
+      - { label: "Post Slug / ID", name: "id", widget: "string" }
+      - { label: "Article Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["Press Release", "Product Update", "Vision & Keynote", "Event", "Notice"] }
+      - { label: "Publish Date", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Author", name: "author", widget: "string", default: "MAIDEN Public Relations" }
+      - { label: "Read Time", name: "readTime", widget: "string", default: "3 min read" }
+      - { label: "Featured Article", name: "featured", widget: "boolean", default: false }
+      - { label: "Summary Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Full Content (Markdown)", name: "content", widget: "markdown" }

@@ -1,245 +1,130 @@
-// OPERATOR PRODUCT SLIDER (Inspired by Star Wars Imperial Army Slider)
-class OperatorSlider {
-  constructor(operators) {
-    this.operators = operators || [];
-    this.currentIndex = 0;
-    this.wrapper = document.querySelector('.operator-slider-wrapper');
-    this.slides = [];
-    this.images = [];
-    this.init();
-  }
+/**
+ * MAIDEN — Hero Product Slider (Star Wars / Vocaloid Clean Edition)
+ * "it should showcase rating and favorites, add parameter to that, like avg rating 4.5 favorites 523100"
+ */
 
-  init() {
-    this.renderSlider();
-    this.bindEvents();
-    this.updateActiveSlide(0, false);
-  }
+(function () {
+  const HeroSlider = {
+    currentIndex: 0,
+    operator: null,
+    autoPlayTimer: null,
 
-  renderSlider() {
-    const imagesContainer = document.getElementById('slider-cutouts');
-    const cardsContainer = document.getElementById('slider-cards-wrp');
+    init(operator) {
+      this.operator = operator || window.appState?.operators[0];
+      if (!this.operator || !this.operator.versions || this.operator.versions.length === 0) return;
 
-    if (!imagesContainer || !cardsContainer) return;
+      this.render();
+      this.bindControls();
+    },
 
-    imagesContainer.innerHTML = '';
-    cardsContainer.innerHTML = '';
+    render() {
+      const container = document.getElementById('heroSliderContainer');
+      if (!container || !this.operator) return;
 
-    this.operators.forEach((op, idx) => {
-      // Cutout 3D floating image item
-      const imgItem = document.createElement('div');
-      imgItem.className = `slider-cutout-item ${idx === 0 ? 'active' : ''}`;
-      imgItem.id = `cutout-${op.id}`;
-      imgItem.innerHTML = `
-        <div class="cutout-glow"></div>
-        <img src="${op.image}" alt="${op.name}" class="cutout-img">
-        <div class="cutout-badge">
-          <span class="badge-type">${op.type}</span>
-          <span class="badge-code">${op.code}</span>
-        </div>
-      `;
-      imagesContainer.appendChild(imgItem);
+      const op = this.operator;
+      const ver = op.versions[this.currentIndex] || op.versions[0];
 
-      // Card item
-      const card = document.createElement('div');
-      card.className = `slider-card-item ${idx === 0 ? 'active' : ''}`;
-      card.dataset.index = idx;
-      card.dataset.target = `cutout-${op.id}`;
+      container.innerHTML = `
+        <div class="slider-container">
+          <!-- Text Info Column -->
+          <div class="hero-info">
+            <div class="hero-meta-row">
+              <span class="badge badge-primary"><i class="ti ti-check-circle"></i> S-Rank Verified</span>
+              <span class="badge badge-outline">${ver.code}</span>
+              <span class="rating-badge">
+                <i class="ti ti-star-filled"></i> ${op.rating} <span style="font-weight: normal; color: #78350f;">(${op.ratingCount || 1200})</span>
+              </span>
+              <span class="favorites-badge">
+                <i class="ti ti-heart-filled"></i> ${op.favorites.toLocaleString()} favorites
+              </span>
+            </div>
 
-      // Calculate stroke dash for circular percent meter (radius 47, circum ~ 295.3)
-      const pct = op.durability || 95;
-      const strokeVal = Math.round((pct / 100) * 295.3);
+            <div>
+              <h1 class="hero-title">${op.name}</h1>
+              <span class="hero-version-name">${ver.versionName}</span>
+            </div>
 
-      card.innerHTML = `
-        <div class="slider-card-inner">
-          <div class="card-bg-grid"></div>
-          <div class="card-header-tag">
-            <span class="tag-status">TACTICAL SPECIFICATION // ${op.type} ENTITY</span>
-            <span class="tag-serial">#${op.code}</span>
-          </div>
+            <p class="hero-quote">"${ver.quote}"</p>
+            <p class="hero-desc">${ver.description}</p>
 
-          <h2 class="slider-card-title">
-            <span class="title-sub">${op.title}</span>
-            <span class="title-main">${op.name}</span>
-          </h2>
-
-          <div class="slider-card-price">
-            <span class="price-val">${Number(op.price).toLocaleString()}</span>
-            <span class="price-unit">LUMINA CREDITS</span>
-          </div>
-
-          <p class="slider-card-quote">“${op.quote}”</p>
-
-          <div class="slider-card-specs">
-            <div class="spec-group">
-              <span class="spec-label">CHASSIS CORE</span>
-              <div class="spec-options">
-                <label class="spec-radio">
-                  <input type="radio" name="core-${op.id}" checked>
-                  <span>${op.type === 'DIVINE' ? 'ETHER-V9' : 'CHRONOS-X'}</span>
-                </label>
-                <label class="spec-radio">
-                  <input type="radio" name="core-${op.id}">
-                  <span>${op.type === 'DIVINE' ? 'VOID-AETHEL' : 'NANO-ALLOY'}</span>
-                </label>
-              </div>
-
-              <span class="spec-label" style="margin-top: 10px;">TACTICAL PROTOCOL</span>
-              <div class="spec-options">
-                <label class="spec-radio">
-                  <input type="radio" name="proto-${op.id}" checked>
-                  <span>DOMINION</span>
-                </label>
-                <label class="spec-radio">
-                  <input type="radio" name="proto-${op.id}">
-                  <span>MAID HOSP.</span>
-                </label>
-                <label class="spec-radio">
-                  <input type="radio" name="proto-${op.id}">
-                  <span>OVERDRIVE</span>
-                </label>
+            <!-- Version Switcher Pills -->
+            <div class="version-switcher-wrap">
+              <div class="version-switcher-label"><i class="ti ti-adjustments-horizontal"></i> Select Operational Version:</div>
+              <div class="version-pills">
+                ${op.versions.map((v, i) => `
+                  <button type="button" class="version-pill ${i === this.currentIndex ? 'active' : ''}"
+                          onclick="window.HeroSlider.goToSlide(${i})">
+                    <i class="ti ti-layers-subtract"></i> ${v.versionName}
+                  </button>
+                `).join('')}
               </div>
             </div>
 
-            <div class="spec-separator"></div>
+            <!-- Price & Specs -->
+            <div class="hero-price-row">
+              <div class="hero-price">$${ver.price.toLocaleString()}</div>
+              <div class="hero-price-note">Credits / Unit (Grant available for relief operations)</div>
+            </div>
 
-            <div class="spec-gauge">
-              <div class="gauge-circle">
-                <svg viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="47" class="gauge-bg" />
-                  <circle cx="50" cy="50" r="47" class="gauge-val" style="stroke-dasharray: ${strokeVal}, 300;" />
-                </svg>
-                <div class="gauge-text">${pct}%</div>
-              </div>
-              <span class="gauge-title">NEURAL INTEGRITY</span>
+            <!-- Action Buttons -->
+            <div class="hero-cta-group">
+              <button class="btn btn-primary btn-lg" onclick="window.DeployModal.open(window.HeroSlider.operator, '${ver.versionId}')">
+                <i class="ti ti-rocket"></i> Deploy Now
+              </button>
+              <button class="btn btn-outline btn-lg" onclick="window.DossierModal.open(window.HeroSlider.operator, '${ver.versionId}')">
+                <i class="ti ti-file-certificate"></i> View Full CV & Stats
+              </button>
+              <button class="btn btn-lucky btn-lg" onclick="window.LuckyDispatch.roll()">
+                <i class="ti ti-dice-5"></i> I'm Feeling Lucky
+              </button>
             </div>
           </div>
 
-          <div class="slider-card-actions">
-            <button class="btn-primary buy-btn" data-id="${op.id}">
-              <span class="btn-icon">⚡</span>
-              <span>REQUISITION / BUY</span>
-            </button>
-            <button class="btn-secondary inspect-btn" data-id="${op.id}">
-              <span class="btn-icon">📊</span>
-              <span>IN-GAME STATS</span>
-            </button>
-            <button class="btn-wishlist js-wishlist" title="Add to Wishlist">
-              <span class="heart-icon">♥</span>
-            </button>
+          <!-- Visual Column (Cutout Character + Box Mockup) -->
+          <div class="hero-visual">
+            <div class="hero-box-backdrop"></div>
+            ${ver.boxImage ? `
+              <img src="${ver.boxImage}" alt="${op.name} Product Box" class="hero-img-box" title="Official Box Mockup">
+            ` : ''}
+            <img src="${ver.image}" alt="${op.name} ${ver.versionName}" class="hero-img-char" id="heroCharImg">
           </div>
         </div>
+
+        <!-- Slider Arrows -->
+        <div class="slider-nav-arrows">
+          <button class="slider-arrow" id="sliderPrevBtn" aria-label="Previous Version" onclick="window.HeroSlider.prevSlide()">
+            <i class="ti ti-chevron-left"></i>
+          </button>
+          <button class="slider-arrow" id="sliderNextBtn" aria-label="Next Version" onclick="window.HeroSlider.nextSlide()">
+            <i class="ti ti-chevron-right"></i>
+          </button>
+        </div>
       `;
+    },
 
-      cardsContainer.appendChild(card);
-    });
+    goToSlide(index) {
+      if (!this.operator || !this.operator.versions) return;
+      this.currentIndex = (index + this.operator.versions.length) % this.operator.versions.length;
+      this.render();
+    },
 
-    this.slides = cardsContainer.querySelectorAll('.slider-card-item');
-    this.images = imagesContainer.querySelectorAll('.slider-cutout-item');
-  }
+    nextSlide() {
+      this.goToSlide(this.currentIndex + 1);
+    },
 
-  bindEvents() {
-    const prevBtn = document.querySelector('.slider-nav-prev');
-    const nextBtn = document.querySelector('.slider-nav-next');
+    prevSlide() {
+      this.goToSlide(this.currentIndex - 1);
+    },
 
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        window.soundEngine.click();
-        this.prev();
+    bindControls() {
+      // Key navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+        if (e.key === 'ArrowRight') this.nextSlide();
+        if (e.key === 'ArrowLeft') this.prevSlide();
       });
     }
+  };
 
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        window.soundEngine.click();
-        this.next();
-      });
-    }
-
-    // Parallax effect on mouse move over slider
-    const sliderContainer = document.querySelector('.operator-slider-section');
-    if (sliderContainer) {
-      sliderContainer.addEventListener('mousemove', (e) => {
-        const rect = sliderContainer.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        const activeImg = document.querySelector('.slider-cutout-item.active .cutout-img');
-        if (activeImg) {
-          activeImg.style.transform = `translate(${x * 24}px, ${y * 18}px) scale(1.02)`;
-        }
-      });
-
-      sliderContainer.addEventListener('mouseleave', () => {
-        const activeImg = document.querySelector('.slider-cutout-item.active .cutout-img');
-        if (activeImg) {
-          activeImg.style.transform = `translate(0px, 0px) scale(1)`;
-        }
-      });
-    }
-
-    // Wishlist toggles
-    document.querySelectorAll('.js-wishlist').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        window.soundEngine.click();
-        btn.classList.toggle('active');
-        const isFav = btn.classList.contains('active');
-        window.showToast(isFav ? "Added to Commander Wishlist" : "Removed from Wishlist");
-      });
-    });
-
-    // Inspect stats button inside slider
-    document.querySelectorAll('.inspect-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const opId = btn.dataset.id;
-        window.openDossierModal(opId);
-      });
-    });
-
-    // Requisition buy button inside slider
-    document.querySelectorAll('.buy-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const opId = btn.dataset.id;
-        window.openPurchaseModal(opId);
-      });
-    });
-  }
-
-  next() {
-    if (this.currentIndex < this.slides.length - 1) {
-      this.updateActiveSlide(this.currentIndex + 1);
-    } else {
-      this.updateActiveSlide(0); // loop
-    }
-  }
-
-  prev() {
-    if (this.currentIndex > 0) {
-      this.updateActiveSlide(this.currentIndex - 1);
-    } else {
-      this.updateActiveSlide(this.slides.length - 1); // loop
-    }
-  }
-
-  updateActiveSlide(index, playSound = true) {
-    this.currentIndex = index;
-    if (playSound) window.soundEngine.click();
-
-    this.slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
-
-    this.images.forEach((img, i) => {
-      img.classList.toggle('active', i === index);
-      const imgEl = img.querySelector('.cutout-img');
-      if (imgEl) imgEl.style.transform = 'translate(0px, 0px) scale(1)';
-    });
-
-    // Update nav buttons disabled state if not looping, or update active dots
-    const counterEl = document.querySelector('.slider-counter');
-    if (counterEl) {
-      counterEl.textContent = `0${index + 1} / 0${this.slides.length}`;
-    }
-  }
-}
-
-window.OperatorSlider = OperatorSlider;
+  window.HeroSlider = HeroSlider;
+})();

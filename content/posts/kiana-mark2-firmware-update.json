@@ -1,0 +1,11 @@
+{
+  "id": "kiana-mark2-firmware-update",
+  "title": "Firmware Matrix v9.2: Dual-Persona Synchronization & Energy Tuning",
+  "category": "Product Update",
+  "date": "2026-10-04",
+  "author": "Engineering Division",
+  "excerpt": "A deep dive into KIANA's dual mode architecture (Divine Goddess & White Blossom) and the latest neural safety patches.",
+  "content": "Firmware matrix update v9.2 is rolling out to all deployed KIANA Mark II units. This patch optimizes power draw during Sub-Space Lance Volley calculations by 18.4% and refines the White Blossom persona switch latency to sub-12 milliseconds. Clients running executive protection profiles will notice smoother interpersonal dialogue modeling and adaptive hospitality scheduling.",
+  "featured": false,
+  "readTime": "4 min read"
+}

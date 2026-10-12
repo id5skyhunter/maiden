@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operator Catalog | MAIDEN — "Make it Real"</title>
+  <meta name="description" content="Browse verified autonomous MaidDroid operators. Filter by operational version, inspect combat statistics, review CV experience, and request deployment.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tabler Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-slogan">
+        <i class="ti ti-sparkles"></i> MAIDEN — Make it Real
+      </div>
+      <div style="display: flex; gap: 18px; align-items: center;">
+        <a href="blog.html" style="display: flex; align-items: center; gap: 4px;">
+          <i class="ti ti-news"></i> Public Relations & Grants
+        </a>
+        <a href="admin/" target="_blank" style="display: flex; align-items: center; gap: 4px; color: var(--text-main);">
+          <i class="ti ti-settings"></i> CMS Portal
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-wrap">
+        <img src="assets/images/logo.svg" alt="MAIDEN Logo" class="brand-logo">
+        <div class="brand-title-group">
+          <span class="brand-title">MAIDEN</span>
+          <span class="brand-subtitle">Project Operator Matrix</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="mainNavMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="operators.html" class="nav-link active">Operators</a></li>
+          <li><a href="blog.html" class="nav-link">PR & News</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="window.DeployModal.open()">
+          <i class="ti ti-send"></i> Deploy Operator
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle Menu">
+          <i class="ti ti-menu-2"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header (Vocaloid Voicebank 01 Style) -->
+  <section style="background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); padding: 50px 0 36px; border-bottom: 1px solid var(--border-light);">
+    <div class="container">
+      <span class="badge badge-primary" style="margin-bottom: 12px;"><i class="ti ti-cpu"></i> Official Database</span>
+      <h1 style="font-family: var(--font-heading); font-size: 2.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">
+        MAIDEN Operators
+      </h1>
+      <p style="color: var(--text-muted); max-width: 680px; font-size: 1rem; line-height: 1.7;">
+        Verified syntheses under Project MAIDEN. Each entity features selectable operational personas, authentic neural models, verified work experience, and tactical stats. Click <strong>View CV</strong> to examine credentials or <strong>Deploy</strong> to authorize assignment.
+      </p>
+
+      <!-- Search & Filters -->
+      <div style="margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
+        <div style="position: relative; flex-grow: 1; max-width: 380px;">
+          <i class="ti ti-search" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+          <input type="text" id="catalogSearchInput" class="form-control" style="padding-left: 40px;" placeholder="Search operator name or code..." oninput="filterCatalog(this.value)">
+        </div>
+
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn btn-dark btn-sm" onclick="filterByTag('ALL')">All Units</button>
+          <button class="btn btn-outline btn-sm" onclick="filterByTag('Divine')">Divine Persona</button>
+          <button class="btn btn-outline btn-sm" onclick="filterByTag('Droid')">Droid Persona</button>
+          <button class="btn btn-lucky btn-sm" onclick="window.LuckyDispatch.roll()"><i class="ti ti-dice-5"></i> Lucky Pick</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Grid Section -->
+  <section class="catalog-section" style="padding-top: 40px;">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-size: 0.875rem; color: var(--text-muted);">
+        <div>Showing certified operator entries</div>
+        <div>Total listed: <strong>1 Active Entity (2 Personas)</strong></div>
+      </div>
+
+      <div class="product-grid" id="catalogFullGrid">
+        <!-- Dynamically rendered by js/catalog.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>MAIDEN</h3>
+          <p>Multipurpose Autonomous Inorganic Divine Entity Network. Official operator database and mission dispatch terminal.</p>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--primary);">
+            Motto: "Make it Real"
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="operators.html">Operator Catalog</a></li>
+            <li><a href="blog.html">Press Releases</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Deployment</h5>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0);" onclick="window.DeployModal.open()">Dispatch Portal</a></li>
+            <li><a href="javascript:void(0);" onclick="window.LuckyDispatch.roll()">Feeling Lucky</a></li>
+            <li><a href="blog.html">Humanitarian Grants</a></li>
+            <li><a href="about.html#faq">FAQ & Guidelines</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Administration</h5>
+          <ul class="footer-links">
+            <li><a href="admin/" target="_blank">Static CMS</a></li>
+            <li><a href="https://github.com/id5skyhunter/maiden" target="_blank">GitHub Repository</a></li>
+            <li><a href="https://id5skyhunter.github.io/maiden/" target="_blank">Live Pages URL</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Project MAIDEN. Slogan: "Make it Real".</div>
+        <div style="display: flex; gap: 16px;">
+          <a href="about.html">Privacy</a>
+          <a href="about.html">Terms</a>
+          <a href="admin/">Static CMS</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/lucky.js"></script>
+  <script src="js/deploy-modal.js"></script>
+  <script src="js/dossier.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/blog.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    function filterCatalog(term) {
+      const q = term.toLowerCase();
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+
+    function filterByTag(tag) {
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        if (tag === 'ALL') {
+          card.style.display = '';
+        } else {
+          const text = card.textContent.toLowerCase();
+          card.style.display = text.includes(tag.toLowerCase()) ? '' : 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
