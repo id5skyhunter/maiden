@@ -1,0 +1,10 @@
+{
+  "id": "cyber-heist",
+  "title": "OPERATION: QUANTUM INFILTRATION",
+  "sector": "SECTOR-09 // CYBERNETIC METROPOLIS",
+  "difficulty": "RANK S",
+  "duration_minutes": 20,
+  "reward_credits": 5200,
+  "preferred_class": "DROID",
+  "briefing": "Infiltrate corrupt megacorp datavault to liberate classified MaidDroid firmware blueprints. Requires high INT and stealth telemetry override capabilities."
+}

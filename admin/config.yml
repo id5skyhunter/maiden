@@ -1,0 +1,61 @@
+backend:
+  name: github
+  repo: id5skyhunter/maiden
+  branch: main
+  base_url: https://id5skyhunter.github.io/maiden/
+
+media_folder: "assets/images"
+public_folder: "assets/images"
+
+collections:
+  - name: "operators"
+    label: "Entities / Operators"
+    folder: "content/operators"
+    create: true
+    slug: "{{slug}}"
+    format: "json"
+    extension: "json"
+    fields:
+      - { label: "Entity ID", name: "id", widget: "string" }
+      - { label: "Operator Name", name: "name", widget: "string" }
+      - { label: "Designation / Title", name: "title", widget: "string" }
+      - { label: "Model Code", name: "code", widget: "string" }
+      - { label: "Entity Type", name: "type", widget: "select", options: ["DIVINE", "DROID"] }
+      - { label: "Price (Credits / Lumina)", name: "price", widget: "number", value_type: "int" }
+      - { label: "Durability / Integrity (%)", name: "durability", widget: "number", default: 95 }
+      - { label: "Hero / Cutout Image", name: "image", widget: "image" }
+      - { label: "Slogan / Quote", name: "quote", widget: "string" }
+      - { label: "Bio & Tactical Dossier", name: "lore", widget: "text" }
+      - label: "In-Game Combat Stats"
+        name: "stats"
+        widget: "object"
+        fields:
+          - { label: "STR (Strength)", name: "str", widget: "number", default: 90 }
+          - { label: "AGI (Agility)", name: "agi", widget: "number", default: 92 }
+          - { label: "INT (Intelligence)", name: "int", widget: "number", default: 88 }
+          - { label: "PWR (Psionic Power)", name: "pwr", widget: "number", default: 95 }
+          - { label: "DEF (Defense)", name: "def", widget: "number", default: 85 }
+          - { label: "SYNC (Neural Resonance)", name: "sync", widget: "number", default: 98 }
+      - label: "Special Abilities"
+        name: "abilities"
+        widget: "list"
+        fields:
+          - { label: "Ability Name", name: "name", widget: "string" }
+          - { label: "Description", name: "desc", widget: "string" }
+
+  - name: "missions"
+    label: "Dispatch Missions"
+    folder: "content/missions"
+    create: true
+    slug: "{{slug}}"
+    format: "json"
+    extension: "json"
+    fields:
+      - { label: "Mission ID", name: "id", widget: "string" }
+      - { label: "Operation Codename", name: "title", widget: "string" }
+      - { label: "Sector", name: "sector", widget: "string" }
+      - { label: "Difficulty Tier", name: "difficulty", widget: "select", options: ["RANK C", "RANK B", "RANK A", "RANK S", "RANK EX"] }
+      - { label: "Duration (Minutes)", name: "duration_minutes", widget: "number", default: 30 }
+      - { label: "Exp / Reward Credits", name: "reward_credits", widget: "number", default: 2500 }
+      - { label: "Preferred Entity Class", name: "preferred_class", widget: "select", options: ["ANY", "DIVINE", "DROID"] }
+      - { label: "Mission Briefing", name: "briefing", widget: "text" }

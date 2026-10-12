@@ -1,0 +1,35 @@
+{
+  "id": "kiana-dg",
+  "name": "KIANA KASLANA",
+  "title": "HERRSCHER OF FLAMESCION // VOID CELESTIAL",
+  "code": "M-DIV-001X",
+  "type": "DIVINE",
+  "price": 14999,
+  "durability": 98,
+  "image": "assets/images/kiana-dg.png",
+  "box_image": "assets/images/kiana-box-final.png",
+  "quote": "Ignite the dawn of tomorrow. The flame of humanity never extinguishes.",
+  "lore": "The premier Divine Entity synthesized under Project MAIDEN. Anchored with high-dimensional Herrscher core matrix, she bends spacetime and emits superluminal psionic radiant flames. Capable of planetary orbital stabilization and localized reality reconfiguration.",
+  "stats": {
+    "str": 95,
+    "agi": 96,
+    "int": 91,
+    "pwr": 99,
+    "def": 94,
+    "sync": 99
+  },
+  "abilities": [
+    {
+      "name": "Sub-Space Lance Volley",
+      "desc": "Deploys 6 micro-wormhole apertures delivering relativistic kinetic hyper-projectiles."
+    },
+    {
+      "name": "Corona Flare Dominion",
+      "desc": "Ignites high-frequency divine flame shield, neutralizing 99.4% energy bombardment."
+    },
+    {
+      "name": "Superluminal Leap",
+      "desc": "Instantly teleports across tactical zones through hyper-dimensional coordinates."
+    }
+  ]
+}

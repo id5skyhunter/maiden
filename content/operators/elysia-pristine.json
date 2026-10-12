@@ -1,0 +1,35 @@
+{
+  "id": "elysia-pristine",
+  "name": "ELYSIA // CELESTIAL ORIGIN",
+  "title": "PRISTINE GODDESS // CRYSTAL REVERIE",
+  "code": "M-DIV-000E",
+  "type": "DIVINE",
+  "price": 16500,
+  "durability": 99,
+  "image": "assets/images/elysia-divine.jpg",
+  "box_image": "assets/images/kiana-box-final.png",
+  "quote": "Hi~ Did you miss me? Every maiden was born to bring wonder to this world.",
+  "lore": "The prototype celestial archetype of the MAIDEN series. Woven from harmonic crystal resonance and pure divine intent. Radiates an unyielding field of optimism, restoring squad morale and transmuting destructive energy into scintillating starlight.",
+  "stats": {
+    "str": 86,
+    "agi": 93,
+    "int": 96,
+    "pwr": 100,
+    "def": 91,
+    "sync": 100
+  },
+  "abilities": [
+    {
+      "name": "Prism Bloom Sanctuary",
+      "desc": "Creates a shimmering dome of crystalline light, granting squad invulnerability for 6 seconds."
+    },
+    {
+      "name": "Arrow of Pure Reverie",
+      "desc": "Fires superluminal photon arrow that pierces spatial barriers and heals allied systems."
+    },
+    {
+      "name": "Infinite Flirtation Pulse",
+      "desc": "Subdues hostile combat algorithms, inducing sensory recalibration across all enemy units."
+    }
+  ]
+}

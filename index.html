@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MAIDEN // Autonomous Inorganic Divine Entity Dispatcher & Acquisition System</title>
+  <meta name="description" content="MAIDEN: Multipurpose Autonomous Inorganic Divine Entity - Futuristic Tactical Anime Persona Dispatcher and Requisition Network. Make it Real.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+
+  <!-- Google Fonts: Orbitron (Display), Rajdhani (Tactical HUD), Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Orbitron:wght@600;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cybernetic Grid & Visual Effects -->
+  <canvas id="bg-cyber-canvas"></canvas>
+  <div class="cyber-grid-overlay"></div>
+  <div class="scanline-fx"></div>
+
+  <div class="app-container">
+
+    <!-- HUD Site Header -->
+    <header class="site-header">
+      <a href="#hero-slider" class="header-brand">
+        <img src="assets/images/logo.svg" alt="MAIDEN Logo" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="brand-title">MAIDEN</span>
+          <span class="brand-slogan">MAKE IT REAL</span>
+        </div>
+      </a>
+
+      <nav class="header-nav">
+        <a href="#hero-slider" class="nav-link">OPERATORS</a>
+        <a href="#tinder-dispatcher" class="nav-link">DISPATCH MATCH</a>
+        <a href="#catalog-section" class="nav-link">REQUISITION</a>
+        <a href="admin/" class="nav-link" target="_blank">STATIC CMS</a>
+      </nav>
+
+      <div class="header-hud-right">
+        <div class="hud-credits">
+          <span class="cur-icon">💎</span>
+          <span class="cur-val" id="commander-credits-val">50,000</span>
+          <span style="font-size: 0.65rem; color: var(--text-muted);">LUMINA</span>
+        </div>
+
+        <button class="btn-tactical" id="nav-roster-btn">
+          <span>ROSTER</span>
+          <span class="badge-counter" id="roster-count-badge">0</span>
+        </button>
+
+        <button class="btn-audio" id="btn-audio-toggle">
+          <span class="label">AUDIO: ON</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Telemetry Ticker -->
+    <div class="telemetry-ticker">
+      <div>
+        <span class="ticker-pulse">●</span> SYSTEM STATUS: ONLINE // PROTOCOL: M-ENDFIELD-2026 // NEURAL SYNC: 99.8%
+      </div>
+      <div>
+        ACTIVE REPOSITORIES: GITHUB/ID5SKYHUNTER/MAIDEN // SECTOR-07 DISPATCH READY
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         SECTION 1: TOP OPERATOR PRODUCT SLIDER (STAR WARS IMPERIAL STYLE)
+         ==================================================================== -->
+    <section class="operator-slider-section" id="hero-slider">
+      <div class="slider-ambient-backdrop"></div>
+      <div class="slider-watermark">MAIDEN</div>
+
+      <div class="operator-slider-wrapper">
+        <!-- Floating 3D Cutout layer on top (left/center) -->
+        <div class="slider-cutouts-container" id="slider-cutouts">
+          <!-- Populated dynamically by js/slider.js -->
+        </div>
+
+        <!-- Background Angled Specification Card Stage -->
+        <div class="slider-card-stage">
+          <div class="slider-cards-wrp" id="slider-cards-wrp">
+            <!-- Populated dynamically by js/slider.js -->
+          </div>
+
+          <!-- Slider Navigation & Counter -->
+          <div class="slider-nav-bar">
+            <span class="slider-counter">01 / 05</span>
+            <button class="slider-nav-btn slider-nav-prev" title="Previous Operator">◄</button>
+            <button class="slider-nav-btn slider-nav-next" title="Next Operator">►</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 2: TINDER-STYLE ENTITY DISPATCHER
+         ==================================================================== -->
+    <section class="tinder-dispatcher-section" id="tinder-dispatcher">
+      <div class="section-hud-header">
+        <div class="hud-prefix">// TACTICAL MATCHING PROTOCOL</div>
+        <h2 class="hud-title">MAIDEN DISPATCHER</h2>
+        <p class="hud-desc">
+          Swipe <b>RIGHT</b> to dispatch and contract operator to active missions. Swipe <b>LEFT</b> to place on reserve standby. Tap any card for full in-game combat stats.
+        </p>
+      </div>
+
+      <!-- 3D Card Stack Container -->
+      <div class="tinder-deck-stage">
+        <div class="tinder-card-deck" id="tinder-card-deck">
+          <!-- Dynamically populated by js/tinder.js -->
+        </div>
+
+        <!-- Deck Empty Notice -->
+        <div class="deck-empty-wrap" id="deck-empty-notice">
+          <div class="empty-icon">⚡</div>
+          <h3 style="font-family: var(--font-display); color: #fff; margin-bottom: 0.5rem;">ALL OPERATORS DISPATCHED</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">The tactical rotation queue is currently exhausted.</p>
+          <button class="btn-primary" id="btn-tinder-reload">RELOAD ROTATION</button>
+        </div>
+      </div>
+
+      <!-- Action Buttons Bar -->
+      <div class="tinder-controls-bar">
+        <button class="btn-tinder-action rewind" id="btn-tinder-rewind" title="Rewind Previous Card">↺</button>
+        <button class="btn-tinder-action pass" id="btn-tinder-pass" title="Standby / Pass (Swipe Left)">✕</button>
+        <button class="btn-tinder-action info" id="btn-tinder-info" title="Inspect Full In-Game Stats">⚡</button>
+        <button class="btn-tinder-action dispatch" id="btn-tinder-dispatch" title="Contract / Dispatch (Swipe Right)">♥</button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 3: ACQUISITION & REQUISITION CATALOG ("BUY A DIVINE OR DROID ENTITY")
+         ==================================================================== -->
+    <section class="catalog-section" id="catalog-section">
+      <div class="section-hud-header">
+        <div class="hud-prefix">// REQUISITION CATALOG</div>
+        <h2 class="hud-title">COMMISSION ENTITIES</h2>
+        <p class="hud-desc">
+          Acquire combat-grade Divine Entities and precision MaidDroid Automata for your command fleet.
+        </p>
+      </div>
+
+      <!-- Filters -->
+      <div class="catalog-filter-bar">
+        <button class="catalog-filter-btn active" data-filter="ALL">ALL OPERATORS</button>
+        <button class="catalog-filter-btn" data-filter="DIVINE">DIVINE ENTITIES</button>
+        <button class="catalog-filter-btn" data-filter="DROID">DROID MAIDROIDS</button>
+      </div>
+
+      <!-- Entities Grid -->
+      <div class="catalog-grid" id="catalog-grid">
+        <!-- Populated dynamically by js/catalog.js -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <span class="footer-brand">MAIDEN SYSTEM // GITHUB PAGES</span>
+          <span class="footer-slogan">Multipurpose Autonomous Inorganic Divine Entity — "Make it Real"</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/id5skyhunter/maiden" target="_blank">GITHUB REPOSITORY</a>
+          <a href="admin/" target="_blank">STATIC CMS PORTAL</a>
+          <a href="#hero-slider">BACK TO TOP ↑</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ====================================================================
+       MODAL 1: IN-GAME RPG STATS DOSSIER & RADAR CHART
+       ==================================================================== -->
+  <div class="modal-overlay" id="dossier-modal">
+    <div class="dossier-modal-window">
+      <button class="modal-close-btn" id="dossier-close-btn">✕</button>
+      
+      <div class="dossier-layout">
+        <!-- Left: Character Splash & Identification -->
+        <div class="dossier-left-col">
+          <div class="dossier-portrait-wrap">
+            <img src="" alt="" id="dossier-img">
+          </div>
+          <span class="dossier-badge" id="dossier-type">DIVINE ENTITY</span>
+          <h3 class="dossier-operator-name" id="dossier-name">KIANA KASLANA</h3>
+          <p class="dossier-operator-title" id="dossier-title">HERRSCHER OF FLAMESCION</p>
+          <span class="dossier-operator-code" id="dossier-code">SERIAL // M-DIV-001X</span>
+          <div class="dossier-quote-box" id="dossier-quote">“Ignite the dawn of tomorrow.”</div>
+        </div>
+
+        <!-- Right: In-Game Combat Stats & Tactical Radar -->
+        <div class="dossier-right-col">
+          <h4 class="dossier-section-title">// IN-GAME COMBAT TELEMETRY & STATS</h4>
+          
+          <div class="dossier-stats-grid">
+            <!-- 6-Axis SVG Hexagon Radar Chart -->
+            <div id="dossier-radar-svg"></div>
+
+            <!-- Dynamic Stat Bars (STR, AGI, INT, PWR, DEF, SYNC) -->
+            <div class="stat-bars-container" id="dossier-stat-bars"></div>
+          </div>
+
+          <h4 class="dossier-section-title">// TACTICAL BIO & LORE</h4>
+          <p class="dossier-lore-text" id="dossier-lore"></p>
+
+          <h4 class="dossier-section-title">// COMBAT PROTOCOLS & ABILITIES</h4>
+          <div class="abilities-list" id="dossier-abilities"></div>
+
+          <h4 class="dossier-section-title">// IMMEDIATE DISPATCH ASSIGNMENT</h4>
+          <div class="dispatch-mission-selector" id="dossier-missions-select"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 2: ENTITY ACQUISITION & REQUISITION MODAL
+       ==================================================================== -->
+  <div class="modal-overlay" id="purchase-modal">
+    <div class="purchase-modal-window">
+      <button class="modal-close-btn" id="purchase-close-btn">✕</button>
+
+      <!-- Step 1: Procurement Form -->
+      <div id="purchase-form-step">
+        <div class="section-hud-header" style="margin-bottom: 1.5rem; text-align: left;">
+          <div class="hud-prefix">// REQUISITION AUTHORIZATION</div>
+          <h3 class="hud-title" style="font-size: 1.6rem;">CONTRACT ACQUISITION</h3>
+        </div>
+
+        <div class="purchase-preview-card">
+          <img src="" alt="" class="purchase-thumb" id="purchase-op-img">
+          <div class="purchase-details">
+            <span class="p-badge" id="purchase-op-type">DIVINE</span>
+            <h4 class="p-name" id="purchase-op-name">OPERATOR</h4>
+            <span class="p-title" id="purchase-op-title">TITLE</span>
+            <span class="p-price" id="purchase-op-price">0 LUMINA</span>
+          </div>
+        </div>
+
+        <div class="delivery-selector">
+          <label style="display: block; font-family: var(--font-display); font-size: 0.72rem; color: var(--cyan); margin-bottom: 0.6rem;">
+            SELECT DEPLOYMENT VECTOR:
+          </label>
+          <div class="delivery-options">
+            <label class="delivery-label">
+              <input type="radio" name="delivery" checked>
+              <div class="delivery-box">
+                <span class="del-title">🚀 ORBITAL DROP</span>
+                <span class="del-sub">Atmospheric Entry Pod</span>
+              </div>
+            </label>
+            <label class="delivery-label">
+              <input type="radio" name="delivery">
+              <div class="delivery-box">
+                <span class="del-title">⚡ QUANTUM LINK</span>
+                <span class="del-sub">Sub-space Synthesis</span>
+              </div>
+            </label>
+            <label class="delivery-label">
+              <input type="radio" name="delivery">
+              <div class="delivery-box">
+                <span class="del-title">❄️ CRYO-STASIS</span>
+                <span class="del-sub">Armored Ground Vessel</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+          <button class="btn-primary" id="btn-confirm-purchase">
+            <span>AUTHORIZE CONTRACT & ACQUIRE</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Confirmation Certificate -->
+      <div id="purchase-cert-step" style="display: none;">
+        <div class="cert-box">
+          <div class="cert-stamp">CONTRACT CONFIRMED</div>
+          <div style="font-family: var(--font-display); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">MAIDEN SERIAL REGISTRATION</div>
+          <div class="cert-serial" id="cert-serial-id">MDN-XXXX-XXXX</div>
+          <h2 style="font-family: var(--font-display); color: #fff; margin-bottom: 0.5rem;" id="cert-op-name">KIANA</h2>
+          <span style="font-family: var(--font-display); color: var(--cyan); font-size: 0.8rem;" id="cert-op-type">DIVINE PROTOCOL</span>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1.2rem;">
+            The entity has been successfully registered to your command database. Check the Commander Roster drawer to inspect deployment status.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       DRAWER: COMMAND ROSTER & ACTIVE DISPATCH SQUAD
+       ==================================================================== -->
+  <div class="drawer-sidebar" id="roster-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">// COMMAND ROSTER</h3>
+      <button class="modal-close-btn" style="position: static;" id="roster-drawer-close">✕</button>
+    </div>
+
+    <div class="drawer-scroll-body">
+      <div>
+        <h4 style="font-family: var(--font-display); font-size: 0.8rem; color: var(--gold); margin-bottom: 0.8rem; letter-spacing: 0.1rem;">
+          ACTIVE DISPATCH MISSIONS
+        </h4>
+        <div id="drawer-dispatches-list"></div>
+      </div>
+
+      <div>
+        <h4 style="font-family: var(--font-display); font-size: 0.8rem; color: var(--cyan); margin-bottom: 0.8rem; letter-spacing: 0.1rem;">
+          CONTRACTED MAIDENS
+        </h4>
+        <div id="drawer-roster-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Alerts Container -->
+  <div id="toast-container"></div>
+
+  <!-- Application Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/tinder.js"></script>
+  <script src="js/dossier.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

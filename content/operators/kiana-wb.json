@@ -1,0 +1,35 @@
+{
+  "id": "kiana-wb",
+  "name": "KIANA // WHITE BLOSSOM",
+  "title": "TACTICAL MAIDROID // COMBAT AUTOMATON",
+  "code": "M-DROID-002B",
+  "type": "DROID",
+  "price": 8499,
+  "durability": 94,
+  "image": "assets/images/kiana-wb.png",
+  "box_image": "assets/images/kiana-box-final.png",
+  "quote": "Master, operational parameters loaded. Tactical protocol White Blossom initiated.",
+  "lore": "Engineered for high-tempo executive security and combat maid hospitality. Features dual sub-micro turbine thrusters, titanium-graphene reinforced skeletal frame, and an adaptive neural personality emulator tuned for absolute fidelity and culinary perfection.",
+  "stats": {
+    "str": 88,
+    "agi": 95,
+    "int": 92,
+    "pwr": 86,
+    "def": 89,
+    "sync": 99
+  },
+  "abilities": [
+    {
+      "name": "Neko-Curtsy EMP Strike",
+      "desc": "Discharges high-density ionic wave disabling enemy cyber-implants within 35 meters."
+    },
+    {
+      "name": "Graphene Apron Deflector",
+      "desc": "Nanotech kinetic absorption mesh absorbs heavy ballistic rounds with zero frame strain."
+    },
+    {
+      "name": "Executive Tea & Firepower",
+      "desc": "Multi-barrel micro-piston hidden weaponry delivering suppressive precision bursts."
+    }
+  ]
+}
