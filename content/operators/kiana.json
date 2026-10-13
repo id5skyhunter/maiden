@@ -13,7 +13,7 @@
       "affiliation": "Hyperion",
       "price": 14999,
       "image": "assets/images/kiana-dg.png",
-      "boxImage": "assets/images/KIANA-DG.png",
+      "boxImage": "assets/images/kiana-dg.png",
       "quote": "Ignite the dawn of tomorrow. The flame of humanity never extinguishes.",
       "description": "The premier synthesis under Project MAIDEN. Anchored with high-dimensional Herrscher core matrix, she bends spacetime and emits superluminal psionic radiant flames. Capable of planetary orbital stabilization and localized reality reconfiguration.",
       "stats": {
@@ -75,7 +75,7 @@
       "affiliation": "MAIDEN Domestic Operations",
       "price": 8499,
       "image": "assets/images/kiana-wb.png",
-      "boxImage": "assets/images/KIANA-WB.png",
+      "boxImage": "assets/images/kiana-wb.png",
       "quote": "Master, operational parameters loaded. Tactical protocol White Blossom initiated.",
       "description": "Engineered for high-tempo executive security and combat maid hospitality. Features dual sub-micro turbine thrusters, titanium-graphene reinforced skeletal frame, and an adaptive neural personality emulator tuned for absolute fidelity.",
       "stats": {

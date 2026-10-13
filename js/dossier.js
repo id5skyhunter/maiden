@@ -95,7 +95,7 @@
                 <button class="btn btn-dark" onclick="window.DossierModal.close(); window.DeployModal.open(window.DossierModal.currentOperator, '${ver.versionId}');">
                   <i class="ti ti-send"></i> Deploy This Operator
                 </button>
-                <div style="font-weight: 800; font-size: 1.25rem;"><i class="ti ti-diamond"></i> ${ver.price.toLocaleString()} <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">(Free on Relief)</span></div>
+                <div style="font-weight: 800; font-size: 1.25rem;"><i class="ti ti-diamond"></i> ${ver.price.toLocaleString()}</div>
               </div>
             </div>
           </div>

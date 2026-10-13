@@ -63,7 +63,6 @@
               <div class="product-price-row">
                 <div>
                   <div class="product-price" id="price-${op.id}"><i class="ti ti-diamond"></i> ${currentVer.price.toLocaleString()}</div>
-                  <div style="font-size: 0.72rem; color: var(--accent-emerald); font-weight: 600;">Subsidized on Relief</div>
                 </div>
               </div>
 

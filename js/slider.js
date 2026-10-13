@@ -86,7 +86,7 @@
                 <div class="hero-price" id="slidePrice">
                   <i class="ti ti-diamond"></i> ${ver.price.toLocaleString()}
                 </div>
-                <div class="hero-price-note">Credits / Unit (100% Grant available on Relief)</div>
+                <div class="hero-price-note">Credits / Unit</div>
               </div>
 
               <!-- Action Buttons -->
