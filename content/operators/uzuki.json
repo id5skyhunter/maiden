@@ -1,0 +1,72 @@
+{
+  "id": "uzuki",
+  "name": "UZUKI",
+  "subtitle": "Cinderella Stage Resonance & Open Area Public Performance Maiden",
+  "rating": 4.7,
+  "ratingCount": 1150,
+  "favorites": 4890000,
+  "versions": [
+    {
+      "versionId": "cs",
+      "versionName": "Cinderella Smile",
+      "code": "M-IDL-006U",
+      "affiliation": "346 Production Civic Outreach",
+      "price": 8999,
+      "image": "assets/images/UZUKI.png",
+      "boxImage": "assets/images/UZUKI.png",
+      "quote": "I'll do my best with a smile! Let's bring happiness and warmth to everyone's world!",
+      "description": "Designed for open-area civic morale elevation, massive stadium acoustics, and infectious positive energy. Uzuki specializes in high-fidelity vocal projection across wide urban sectors, bringing hope, civic unity, and cultural rejuvenation to recovery zones.",
+      "stats": {
+        "str": 76,
+        "agi": 88,
+        "int": 89,
+        "pwr": 84,
+        "def": 85,
+        "sync": 99
+      },
+      "cv": {
+        "learningModel": "Acoustic Harmony Core v5.5 (Cinderella Edition)",
+        "generation": "2nd Generation (Cultural Series)",
+        "activationDate": "2024-08-18",
+        "specializations": [
+          "Open-Area Stadium Acoustics",
+          "Public Morale Reinforcement",
+          "Synchronized Choreographic Synthesis"
+        ],
+        "workExperience": [
+          {
+            "role": "Public Goodwill Ambassador",
+            "org": "346 Production Civic Outreach",
+            "period": "2024 — Present",
+            "desc": "Keynote performer for regional reconstruction festivals and open-air morale restoration tours."
+          },
+          {
+            "role": "Stage Protocol Tester",
+            "org": "Cinderella Stage Acoustics Lab",
+            "period": "2023 — 2024",
+            "desc": "Tested harmonic frequency resonance across metropolitan amphitheaters and flood-relief camps."
+          }
+        ],
+        "certifications": [
+          "Grand Tier Vocalist & Performer License",
+          "Civic Morale Elevation Specialist Accreditation",
+          "Open Area High-Frequency Acoustic Safety Certification"
+        ]
+      },
+      "abilities": [
+        {
+          "name": "S.M.I.L.E. Resonance Wave",
+          "desc": "Projects comforting low-frequency acoustic warmth restoring civ morale and mental resilience."
+        },
+        {
+          "name": "Cinderella Stage Illumination",
+          "desc": "Deploys multi-spectrum holographic lighting towers across open-air venues up to 100 meters."
+        },
+        {
+          "name": "Never Say Never Crescendo",
+          "desc": "Overcomes acoustic interference to deliver crystal clear audio during civil emergencies."
+        }
+      ]
+    }
+  ]
+}

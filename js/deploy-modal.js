@@ -83,9 +83,9 @@
               <select id="deployCategorySelect" class="form-control" onchange="window.DeployModal.updateCostCalculation()">
                 <option value="humanitarian" data-price="0">Humanitarian & Public Relief [FREE / 0 Credits]</option>
                 <option value="sar" data-price="0">Disaster Search & Rescue [FREE / 0 Credits]</option>
-                <option value="general" data-price="${ver.price}">General Civilian Defense ($${ver.price.toLocaleString()})</option>
-                <option value="private" data-price="${Math.round(ver.price * 1.25)}">Private Executive VIP Detail ($${Math.round(ver.price * 1.25).toLocaleString()})</option>
-                <option value="tactical" data-price="${Math.round(ver.price * 1.5)}">Classified High-Threat Combat ($${Math.round(ver.price * 1.5).toLocaleString()})</option>
+                <option value="general" data-price="${ver.price}">General Civilian Defense (◆ ${ver.price.toLocaleString()} Credits)</option>
+                <option value="private" data-price="${Math.round(ver.price * 1.25)}">Private Executive VIP Detail (◆ ${Math.round(ver.price * 1.25).toLocaleString()} Credits)</option>
+                <option value="tactical" data-price="${Math.round(ver.price * 1.5)}">Classified High-Threat Combat (◆ ${Math.round(ver.price * 1.5).toLocaleString()} Credits)</option>
               </select>
             </div>
           </div>
@@ -152,11 +152,11 @@
       const price = parseInt(selectedOption.getAttribute('data-price') || '0', 10);
 
       if (price === 0) {
-        costDisplay.textContent = 'FREE (0 CR)';
+        costDisplay.innerHTML = 'FREE (0 CR)';
         costDisplay.className = 'cost-val cost-free';
         costNote.textContent = '100% Subsidized by MAIDEN Humanitarian Assistance Charter';
       } else {
-        costDisplay.textContent = `$${price.toLocaleString()} Credits`;
+        costDisplay.innerHTML = `<i class="ti ti-diamond"></i> ${price.toLocaleString()} Credits`;
         costDisplay.className = 'cost-val';
         costNote.textContent = 'Standard commercial invoice billed upon deployment completion';
       }

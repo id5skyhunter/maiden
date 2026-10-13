@@ -73,7 +73,7 @@
             <div class="dossier-header-info">
               <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px; flex-wrap: wrap;">
                 <span class="badge badge-primary">${ver.code}</span>
-                <span class="badge badge-outline">${ver.tag} Class</span>
+                <span class="badge badge-outline">${ver.affiliation || ver.tag || "Tactical Division"}</span>
                 <span class="rating-badge"><i class="ti ti-star-filled"></i> ${op.rating} / 5.0</span>
                 <span class="favorites-badge"><i class="ti ti-heart-filled"></i> ${op.favorites.toLocaleString()}</span>
               </div>
@@ -91,11 +91,11 @@
                 `).join('')}
               </div>
 
-              <div style="display: flex; gap: 12px; align-items: center;">
+              <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
                 <button class="btn btn-dark" onclick="window.DossierModal.close(); window.DeployModal.open(window.DossierModal.currentOperator, '${ver.versionId}');">
                   <i class="ti ti-send"></i> Deploy This Operator
                 </button>
-                <div style="font-weight: 800; font-size: 1.25rem;">$${ver.price.toLocaleString()} <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">(Free on Relief)</span></div>
+                <div style="font-weight: 800; font-size: 1.25rem;"><i class="ti ti-diamond"></i> ${ver.price.toLocaleString()} <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">(Free on Relief)</span></div>
               </div>
             </div>
           </div>

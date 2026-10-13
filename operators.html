@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3.0">
 </head>
 <body>
 
@@ -78,7 +78,7 @@
         MAIDEN Operators
       </h1>
       <p style="color: var(--text-muted); max-width: 680px; font-size: 1rem; line-height: 1.7;">
-        Verified syntheses under Project MAIDEN. Each entity features selectable operational personas, authentic neural models, verified work experience, and tactical stats. Click <strong>View CV</strong> to examine credentials or <strong>Deploy</strong> to authorize assignment.
+        Verified syntheses under Project MAIDEN. Each entity features selectable operational personas, authentic neural models, verified work experience, and tactical stats. Click <strong>Details</strong> to examine credentials or <strong>Deploy</strong> to authorize assignment.
       </p>
 
       <!-- Search & Filters -->
@@ -90,8 +90,8 @@
 
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
           <button class="btn btn-dark btn-sm" onclick="filterByTag('ALL')">All Units</button>
-          <button class="btn btn-outline btn-sm" onclick="filterByTag('Divine')">Divine Persona</button>
-          <button class="btn btn-outline btn-sm" onclick="filterByTag('Droid')">Droid Persona</button>
+          <button class="btn btn-outline btn-sm" onclick="filterByTag('Tactical')">Tactical & Defense</button>
+          <button class="btn btn-outline btn-sm" onclick="filterByTag('Relief')">Relief & Medical</button><button class="btn btn-outline btn-sm" onclick="filterByTag('Corporate')">Corporate & Office</button><button class="btn btn-outline btn-sm" onclick="filterByTag('Acoustic')">Cultural & Acoustic</button>
           <button class="btn btn-lucky btn-sm" onclick="window.LuckyDispatch.roll()"><i class="ti ti-dice-5"></i> Lucky Pick</button>
         </div>
       </div>
@@ -103,7 +103,7 @@
     <div class="container">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-size: 0.875rem; color: var(--text-muted);">
         <div>Showing certified operator entries</div>
-        <div>Total listed: <strong>1 Active Entity (2 Personas)</strong></div>
+        <div>Total listed: <strong id="totalOperatorsCount">7 Active Entities</strong></div>
       </div>
 
       <div class="product-grid" id="catalogFullGrid">
@@ -166,13 +166,13 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/lucky.js"></script>
-  <script src="js/deploy-modal.js"></script>
-  <script src="js/dossier.js"></script>
-  <script src="js/slider.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/blog.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/lucky.js?v=3.0"></script>
+  <script src="js/deploy-modal.js?v=3.0"></script>
+  <script src="js/dossier.js?v=3.0"></script>
+  <script src="js/slider.js?v=3.0"></script>
+  <script src="js/catalog.js?v=3.0"></script>
+  <script src="js/blog.js?v=3.0"></script>
+  <script src="js/app.js?v=3.0"></script>
 
   <script>
     function filterCatalog(term) {

@@ -39,7 +39,7 @@
 
   const LuckyDispatch = {
     roll() {
-      const op = window.appState?.operators[0];
+      const ops = window.appState?.operators || []; const op = ops[Math.floor(Math.random() * ops.length)];
       if (!op || !op.versions || op.versions.length === 0) return;
 
       // Pick random version

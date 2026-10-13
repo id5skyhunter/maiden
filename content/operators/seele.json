@@ -1,0 +1,72 @@
+{
+  "id": "seele",
+  "name": "SEELE",
+  "subtitle": "Panacea Medical Biosphere & Rapid Relief Specialist",
+  "rating": 4.9,
+  "ratingCount": 1520,
+  "favorites": 6120000,
+  "versions": [
+    {
+      "versionId": "ad",
+      "versionName": "Panacea Rebirth",
+      "code": "M-MED-005S",
+      "affiliation": "Humanitarian Relief Corps",
+      "price": 9999,
+      "image": "assets/images/SEELE-AD.png",
+      "boxImage": "assets/images/SEELE-AD.png",
+      "quote": "Don't be afraid. Whether life or light, I will safeguard you to the gentle shore.",
+      "description": "Synthesized with cellular rejuvenation catalysts and quantum biospheric restoration protocols. Seele serves as the primary medical and psychological stabilizer under the Humanitarian Charter, reversing catastrophic physical wounds and restoring ecological quarantine biomes.",
+      "stats": {
+        "str": 85,
+        "agi": 93,
+        "int": 96,
+        "pwr": 92,
+        "def": 93,
+        "sync": 99
+      },
+      "cv": {
+        "learningModel": "Quantum Life Resonator v6.8",
+        "generation": "2nd Generation (Panacea Series)",
+        "activationDate": "2024-07-10",
+        "specializations": [
+          "Emergency Cellular Regeneration",
+          "Biosphere Purification",
+          "Psychological Empathy Stabilization"
+        ],
+        "workExperience": [
+          {
+            "role": "Chief Medical Dispatcher",
+            "org": "Humanitarian Relief Corps",
+            "period": "2024 — Present",
+            "desc": "Coordinates zero-credit disaster medical drops and rapid bio-restoration triage stations."
+          },
+          {
+            "role": "Trauma Clinic Field Practitioner",
+            "org": "St. Freya Bio-Research Hospital",
+            "period": "2023 — 2024",
+            "desc": "Administered nanotech surgical repair units in contaminated and hazardous radiation zones."
+          }
+        ],
+        "certifications": [
+          "Master Class Universal Medical Doctorate",
+          "Sub-Space Quarantine Containment Clearance",
+          "Humanitarian Relief Charter First Responder"
+        ]
+      },
+      "abilities": [
+        {
+          "name": "Panacea Bloom Sanctuary",
+          "desc": "Emits radiant sub-space medical field accelerating patient wound closure by 980%."
+        },
+        {
+          "name": "Quantum Rejuvenation Veil",
+          "desc": "Purges toxicity, radiation, and biochemical pathogens in a 50-meter diameter sphere."
+        },
+        {
+          "name": "Mirror Butterfly Resurgence",
+          "desc": "Creates empathic life-force partitions shielding critical patients from lethal shock."
+        }
+      ]
+    }
+  ]
+}

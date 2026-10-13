@@ -41,15 +41,32 @@
     },
 
     async loadOperators() {
-      try {
-        const res = await fetch('content/operators/kiana.json');
-        if (res.ok) {
-          const kiana = await res.json();
-          window.appState.operators = [kiana];
-          return;
+      const operatorFiles = [
+        'content/operators/kiana.json',
+        'content/operators/mei.json',
+        'content/operators/bronya.json',
+        'content/operators/seele.json',
+        'content/operators/uzuki.json',
+        'content/operators/miku.json',
+        'content/operators/mobius.json'
+      ];
+
+      const loaded = [];
+      for (const file of operatorFiles) {
+        try {
+          const res = await fetch(file);
+          if (res.ok) {
+            const op = await res.json();
+            loaded.push(op);
+          }
+        } catch (e) {
+          console.warn('Operator fetch fallback for ' + file, e);
         }
-      } catch (e) {
-        console.warn('Operator fetch fallback', e);
+      }
+
+      if (loaded.length > 0) {
+        window.appState.operators = loaded;
+        return;
       }
 
       // Offline / fallback data structure
@@ -60,36 +77,30 @@
           subtitle: "Multipurpose Autonomous Maiden",
           rating: 4.5,
           ratingCount: 1283,
-          favorites: 523100,
+          favorites: 7523100,
           versions: [
             {
               versionId: "dg",
-              versionName: "Divine Goddess",
+              versionName: "Moon Chanter",
               code: "M-DIV-001X",
-              tag: "Divine",
+              affiliation: "MAIDEN Tactical Division",
               price: 14999,
               image: "assets/images/kiana-dg.png",
-              boxImage: "assets/images/kiana-box-final.png",
+              boxImage: "assets/images/KIANA-DG.png",
               quote: "Ignite the dawn of tomorrow. The flame of humanity never extinguishes.",
               description: "The premier synthesis under Project MAIDEN. Anchored with high-dimensional Herrscher core matrix, she bends spacetime and emits superluminal psionic radiant flames.",
               stats: { str: 95, agi: 96, int: 91, pwr: 99, def: 94, sync: 99 },
               cv: {
-                learningModel: "Herrscher Core Matrix v9.2",
+                learningModel: "Quanta 7.2",
                 generation: "2nd Generation (Mark II)",
                 activationDate: "2024-03-15",
                 specializations: ["Reality Reconfiguration", "Orbital Stabilization", "Psionic Flame Projection"],
                 workExperience: [
                   {
-                    role: "Primary Vanguard Operator",
+                    role: "Space Exploration Supervisor",
                     org: "MAIDEN Tactical Division",
                     period: "2024 — Present",
                     desc: "Lead strike operator for high-priority interdimensional breach containment."
-                  },
-                  {
-                    role: "Prototype Field Tester",
-                    org: "Project MAIDEN R&D Lab",
-                    period: "2023 — 2024",
-                    desc: "Core matrix stability testing and combat parameter calibration."
                   }
                 ],
                 certifications: [
@@ -105,12 +116,12 @@
             },
             {
               versionId: "wb",
-              versionName: "White Blossom",
+              versionName: "Wintery Wishes",
               code: "M-DROID-002B",
-              tag: "Droid",
+              affiliation: "MAIDEN Domestic Operations",
               price: 8499,
               image: "assets/images/kiana-wb.png",
-              boxImage: "assets/images/kiana-box-final.png",
+              boxImage: "assets/images/KIANA-WB.png",
               quote: "Master, operational parameters loaded. Tactical protocol White Blossom initiated.",
               description: "Engineered for high-tempo executive security and combat maid hospitality. Features dual sub-micro turbine thrusters and an adaptive neural personality emulator.",
               stats: { str: 88, agi: 95, int: 92, pwr: 86, def: 89, sync: 99 },
@@ -147,21 +158,34 @@
       const menuBtn = document.getElementById('mobileMenuToggle');
       const navMenu = document.getElementById('mainNavMenu');
       if (menuBtn && navMenu) {
-        menuBtn.addEventListener('click', () => {
+        menuBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
           navMenu.classList.toggle('open');
-          if (navMenu.classList.contains('open')) {
-            navMenu.style.display = 'flex';
-            navMenu.style.flexDirection = 'column';
-            navMenu.style.position = 'absolute';
-            navMenu.style.top = '72px';
-            navMenu.style.left = '0';
-            navMenu.style.right = '0';
-            navMenu.style.background = '#ffffff';
-            navMenu.style.padding = '20px 24px';
-            navMenu.style.borderBottom = '1px solid var(--border-light)';
-            navMenu.style.boxShadow = 'var(--shadow-md)';
-          } else {
-            navMenu.style.display = '';
+          const isOpen = navMenu.classList.contains('open');
+          menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          const icon = menuBtn.querySelector('i');
+          if (icon) {
+            icon.className = isOpen ? 'ti ti-x' : 'ti ti-menu-2';
+          }
+        });
+
+        // Close menu when clicking any nav link
+        navMenu.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            const icon = menuBtn.querySelector('i');
+            if (icon) icon.className = 'ti ti-menu-2';
+          });
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!navMenu.contains(e.target) && !menuBtn.contains(e.target) && navMenu.classList.contains('open')) {
+            navMenu.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            const icon = menuBtn.querySelector('i');
+            if (icon) icon.className = 'ti ti-menu-2';
           }
         });
       }

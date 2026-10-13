@@ -1,0 +1,72 @@
+{
+  "id": "mei",
+  "name": "MEI",
+  "subtitle": "Xentinel Tactical Combat & Electromagnetic Dominance Unit",
+  "rating": 4.9,
+  "ratingCount": 1640,
+  "favorites": 6420500,
+  "versions": [
+    {
+      "versionId": "dk",
+      "versionName": "Xentinel",
+      "code": "M-XEN-003M",
+      "affiliation": "Hyperion",
+      "price": 13999,
+      "image": "assets/images/MEI-DK.png",
+      "boxImage": "assets/images/MEI-DK.png",
+      "quote": "If saving you is a sin, I will gladly become a sinner. The lightning obeys my command.",
+      "description": "Engineered as an apex vanguard assault combat maiden. Channeling concentrated electromagnetic plasma and magnetic singularity blades, Mei operates as the premier frontline sentinel, defending civic perimeters and neutralising hostile breaches with lightning supremacy.",
+      "stats": {
+        "str": 98,
+        "agi": 97,
+        "int": 93,
+        "pwr": 98,
+        "def": 91,
+        "sync": 96
+      },
+      "cv": {
+        "learningModel": "Electromagnetic Pulse Core v8.6",
+        "generation": "2nd Generation (Mark II-X)",
+        "activationDate": "2024-04-13",
+        "specializations": [
+          "Electromagnetic Blade Mastery",
+          "Aerial Interception",
+          "High-Frequency Plasma Discharge"
+        ],
+        "workExperience": [
+          {
+            "role": "Chief Strike Vanguard",
+            "org": "Xentinel Tactical Division",
+            "period": "2024 — Present",
+            "desc": "Lead commander of high-threat interception and rapid reactionary counter-strike operations."
+          },
+          {
+            "role": "Advanced Combat Field Calibration",
+            "org": "ME-Corp Advanced Armaments",
+            "period": "2023 — 2024",
+            "desc": "Calibrated dual Kurikara-matrix lightning converters for supersonic kinetic warfare."
+          }
+        ],
+        "certifications": [
+          "S-Rank Heavy Armament Certification",
+          "High-Yield Electromagnetic Field Safety License",
+          "Fleet-Level Operational Command Clearance"
+        ]
+      },
+      "abilities": [
+        {
+          "name": "Thundering Sanction",
+          "desc": "Calls down superheated ionic lightning strikes, disintegrating shields in a 60-meter radius."
+        },
+        {
+          "name": "Kurikara's Tempest",
+          "desc": "Summons resonant dragonic electromagnetic aura to slice through reinforced armored battle-cruisers."
+        },
+        {
+          "name": "Tacheon Edge Flash",
+          "desc": "Unsheathes relativistic blade causing localized space-time shearing."
+        }
+      ]
+    }
+  ]
+}

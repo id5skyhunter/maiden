@@ -1,0 +1,72 @@
+{
+  "id": "mobius",
+  "name": "MOBIUS",
+  "subtitle": "Infinity Bio-Evolution & Genetic Restructuring Architect",
+  "rating": 4.9,
+  "ratingCount": 1390,
+  "favorites": 5740000,
+  "versions": [
+    {
+      "versionId": "mx",
+      "versionName": "Ouroboros Evolution",
+      "code": "M-BIO-008O",
+      "affiliation": "Realm of Ouroboros Bio-Lab",
+      "price": 13499,
+      "image": "assets/images/MOBIUS.png",
+      "boxImage": "assets/images/MOBIUS.png",
+      "quote": "Evolution never ceases. Let us uncover the endless mysteries encoded in life itself.",
+      "description": "Architected for extreme environmental bio-adaptation, toxic waste transmutation, and cellular cellular immortality research. Mobius operates at the boundary of synthetic cybernetics and evolutionary biology.",
+      "stats": {
+        "str": 89,
+        "agi": 94,
+        "int": 99,
+        "pwr": 97,
+        "def": 92,
+        "sync": 98
+      },
+      "cv": {
+        "learningModel": "Ouroboros Helix Core v9.0",
+        "generation": "2nd Generation (Bio-Matrix)",
+        "activationDate": "2024-04-30",
+        "specializations": [
+          "Extreme Habitat Bio-Adaptation",
+          "Hazardous Biohazard Neutralization",
+          "Cellular Matrix Synthesis"
+        ],
+        "workExperience": [
+          {
+            "role": "Chief Geneticist & Adaptation Lead",
+            "org": "Realm of Ouroboros Bio-Lab",
+            "period": "2024 — Present",
+            "desc": "Designs biological countermeasures against alien spores and deep-space extreme environments."
+          },
+          {
+            "role": "Bio-Synthetic Core Architect",
+            "org": "Fire Moth Research Cluster",
+            "period": "2023 — 2024",
+            "desc": "Engineered self-replicating nanocell lattices for emergency atmospheric scrubbers."
+          }
+        ],
+        "certifications": [
+          "Infinity Bio-Evolution Master License",
+          "Biohazard Class-4 Field Quarantine Clearance",
+          "Nanocell Synthesis Accreditation"
+        ]
+      },
+      "abilities": [
+        {
+          "name": "Ouroboros Slither Surge",
+          "desc": "Manifests bio-luminescent serpents of energy devouring harmful chemical contaminants."
+        },
+        {
+          "name": "Evolutionary Re-Genesis",
+          "desc": "Rapidly adapts armor and shielding properties to match the enemy's attack element."
+        },
+        {
+          "name": "Infinity Laboratory Field",
+          "desc": "Accelerates bio-catalytic breakdown of environmental biohazards within a 45-meter radius."
+        }
+      ]
+    }
+  ]
+}

@@ -4,16 +4,16 @@
   "subtitle": "Multipurpose Autonomous Maiden",
   "rating": 4.5,
   "ratingCount": 1283,
-  "favorites": 523100,
+  "favorites": 7523100,
   "versions": [
     {
       "versionId": "dg",
       "versionName": "Moon Chanter",
       "code": "M-DIV-001X",
-      "tag": "Divine",
+      "affiliation": "Hyperion",
       "price": 14999,
       "image": "assets/images/kiana-dg.png",
-      "boxImage": "assets/images/kiana-box-final.png",
+      "boxImage": "assets/images/KIANA-DG.png",
       "quote": "Ignite the dawn of tomorrow. The flame of humanity never extinguishes.",
       "description": "The premier synthesis under Project MAIDEN. Anchored with high-dimensional Herrscher core matrix, she bends spacetime and emits superluminal psionic radiant flames. Capable of planetary orbital stabilization and localized reality reconfiguration.",
       "stats": {
@@ -25,7 +25,7 @@
         "sync": 99
       },
       "cv": {
-        "learningModel": "Herrscher Core Matrix v9.2",
+        "learningModel": "Quanta 7.2",
         "generation": "2nd Generation (Mark II)",
         "activationDate": "2024-03-15",
         "specializations": [
@@ -35,7 +35,7 @@
         ],
         "workExperience": [
           {
-            "role": "Primary Vanguard Operator",
+            "role": "Space Exploration Supervisor",
             "org": "MAIDEN Tactical Division",
             "period": "2024 — Present",
             "desc": "Lead strike operator for high-priority interdimensional breach containment."
@@ -72,10 +72,10 @@
       "versionId": "wb",
       "versionName": "Wintery Wishes",
       "code": "M-DROID-002B",
-      "tag": "Droid",
+      "affiliation": "MAIDEN Domestic Operations",
       "price": 8499,
       "image": "assets/images/kiana-wb.png",
-      "boxImage": "assets/images/kiana-box-final.png",
+      "boxImage": "assets/images/KIANA-WB.png",
       "quote": "Master, operational parameters loaded. Tactical protocol White Blossom initiated.",
       "description": "Engineered for high-tempo executive security and combat maid hospitality. Features dual sub-micro turbine thrusters, titanium-graphene reinforced skeletal frame, and an adaptive neural personality emulator tuned for absolute fidelity.",
       "stats": {

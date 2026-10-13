@@ -38,7 +38,7 @@
             <!-- Card Body -->
             <div class="product-card-body">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                <span class="product-tag" id="tag-${op.id}">${currentVer.tag} Class</span>
+                <span class="product-tag" id="tag-${op.id}">${currentVer.affiliation || currentVer.tag || 'Tactical Division'}</span>
                 <span style="font-size: 0.75rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px;">
                   <i class="ti ti-heart-filled" style="color: #ec4899;"></i> ${op.favorites.toLocaleString()}
                 </span>
@@ -62,16 +62,16 @@
               <!-- Price & Actions -->
               <div class="product-price-row">
                 <div>
-                  <div class="product-price" id="price-${op.id}">$${currentVer.price.toLocaleString()}</div>
+                  <div class="product-price" id="price-${op.id}"><i class="ti ti-diamond"></i> ${currentVer.price.toLocaleString()}</div>
                   <div style="font-size: 0.72rem; color: var(--accent-emerald); font-weight: 600;">Subsidized on Relief</div>
                 </div>
               </div>
 
               <div class="product-card-actions">
-                <button class="btn btn-outline btn-sm" onclick="window.DossierModal.open(window.appState.operators.find(o => o.id === '${op.id}'), '${currentVer.versionId}')">
-                  <i class="ti ti-file-text"></i> View CV
+                <button class="btn btn-outline btn-sm" onclick="window.DossierModal.open(window.appState.operators.find(o => o.id === '${op.id}'), window.OperatorCatalog.selectedVersions['${op.id}'] || '${currentVer.versionId}')">
+                  <i class="ti ti-file-text"></i> Details
                 </button>
-                <button class="btn btn-primary btn-sm" onclick="window.DeployModal.open(window.appState.operators.find(o => o.id === '${op.id}'), '${currentVer.versionId}')">
+                <button class="btn btn-primary btn-sm" onclick="window.DeployModal.open(window.appState.operators.find(o => o.id === '${op.id}'), window.OperatorCatalog.selectedVersions['${op.id}'] || '${currentVer.versionId}')">
                   <i class="ti ti-rocket"></i> Deploy
                 </button>
               </div>
@@ -97,13 +97,13 @@
       if (thumb) thumb.src = ver.image;
 
       const tag = card.querySelector(`#tag-${operatorId}`);
-      if (tag) tag.textContent = `${ver.tag} Class`;
+      if (tag) tag.textContent = ver.affiliation || 'MAIDEN Division';
 
       const subtitle = card.querySelector(`#subtitle-${operatorId}`);
       if (subtitle) subtitle.textContent = `${ver.versionName} — ${ver.code}`;
 
       const price = card.querySelector(`#price-${operatorId}`);
-      if (price) price.textContent = `$${ver.price.toLocaleString()}`;
+      if (price) price.innerHTML = `<i class="ti ti-diamond"></i> ${ver.price.toLocaleString()}`;
 
       // Update button active states
       const buttons = card.querySelectorAll('.card-version-btn');

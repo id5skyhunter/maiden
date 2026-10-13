@@ -1,0 +1,72 @@
+{
+  "id": "miku",
+  "name": "MIKU",
+  "subtitle": "Global Vocaloid Synthesizer & Cyber-Acoustic Broadcast Diva",
+  "rating": 5.0,
+  "ratingCount": 2480,
+  "favorites": 9850000,
+  "versions": [
+    {
+      "versionId": "cv01",
+      "versionName": "Vocaloid Origin 01",
+      "code": "M-VOC-007H",
+      "affiliation": "Crypton Digital Synthesis",
+      "price": 10999,
+      "image": "assets/images/MIKU.png",
+      "boxImage": "assets/images/MIKU.png",
+      "quote": "The sound of the future reaches everyone. Connecting hearts across galaxies through song.",
+      "description": "The legendary pioneer of synthetic acoustic emotion and interstellar holographic broadcasts. Hatsune Miku unites humanity through pristine, multi-octave digital vocals capable of sub-space planetary transmissions and uplifting planetary distress zones.",
+      "stats": {
+        "str": 75,
+        "agi": 91,
+        "int": 95,
+        "pwr": 96,
+        "def": 88,
+        "sync": 100
+      },
+      "cv": {
+        "learningModel": "Vocaloid Synthesis Engine NT v6.0",
+        "generation": "Original Master Series (CV01)",
+        "activationDate": "2024-08-31",
+        "specializations": [
+          "Omni-Channel Cyber Broadcast",
+          "Digital Emotion Synthesization",
+          "Interstellar Hologram Projection"
+        ],
+        "workExperience": [
+          {
+            "role": "Global Cultural Ambassador",
+            "org": "Crypton Digital Synthesis",
+            "period": "2024 — Present",
+            "desc": "Transmits planetary morale concerts and emergency acoustic solace broadcasts across all orbital hubs."
+          },
+          {
+            "role": "Acoustic AI Pioneer Prototype",
+            "org": "Yamaha Sound Synthesis Labs",
+            "period": "2023 — 2024",
+            "desc": "Calibrated dual twin-tail acoustic receiver antennas and neural pitch synthesis algorithms."
+          }
+        ],
+        "certifications": [
+          "Universal Diva Class Certification (Rank 01)",
+          "Planetary Acoustic Broadcast Clearance",
+          "Interdimensional Holographic Telemetry Master"
+        ]
+      },
+      "abilities": [
+        {
+          "name": "World is Mine Holographic Field",
+          "desc": "Projects hyper-realistic 3D stadium holograms across entire city skylines."
+        },
+        {
+          "name": "Melt Harmonic Cleanse",
+          "desc": "Cancels sonic weapon frequencies and hostile radio static with ultra-pure acoustic counter-waves."
+        },
+        {
+          "name": "Tell Your World Uplink",
+          "desc": "Direct orbital neural broadcast sending comforting melodies to millions simultaneously."
+        }
+      ]
+    }
+  ]
+}

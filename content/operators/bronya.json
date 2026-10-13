@@ -1,0 +1,72 @@
+{
+  "id": "bronya",
+  "name": "BRONYA",
+  "subtitle": "Office Strategic Executive & High-Complexity Management Maid",
+  "rating": 4.8,
+  "ratingCount": 1410,
+  "favorites": 5980200,
+  "versions": [
+    {
+      "versionId": "ol",
+      "versionName": "Executive",
+      "code": "BUNNY-014C",
+      "affiliation": "Hyperion",
+      "price": 12499,
+      "image": "assets/images/BRONYA-OL.png",
+      "boxImage": "assets/images/BRONYA-OL.png",
+      "quote": "Head Developer of E.T. Studio.",
+      "description": "Excel on All Tech-based information management, but gaming is her priority",
+      "stats": {
+        "str": 82,
+        "agi": 86,
+        "int": 99,
+        "pwr": 85,
+        "def": 95,
+        "sync": 99
+      },
+      "cv": {
+        "learningModel": "Protocol One",
+        "generation": "2nd",
+        "activationDate": "2024-05-01",
+        "specializations": [
+          "Strategic Resource Allocation",
+          "Autonomous Financial Modeling",
+          "Quantum Data Defense"
+        ],
+        "workExperience": [
+          {
+            "role": "Head Developer",
+            "org": "E.T. Studio",
+            "period": "2024 — Present",
+            "desc": "Directing Game development while acquiring other company at her lead."
+          },
+          {
+            "role": "Lead Systems Analyst",
+            "org": "Silverwing Digital Systems",
+            "period": "2023 — 2024",
+            "desc": "Architected sub-second financial reconciliation pipelines and high-security encrypted dossiers."
+          }
+        ],
+        "certifications": [
+          "Global Enterprise Architecture Master License",
+          "Quantum Security Audit Clearance (Level 5)",
+          "Autonomous Corporate Stewardship License"
+        ]
+      },
+      "abilities": [
+        {
+          "name": "Project Bunny Analytics Protocol",
+          "desc": "Processes 100 million simultaneous logistic scenarios to compute optimal strategic outcomes."
+        },
+        {
+          "name": "Cyber-Barrier Firewall Dominion",
+          "desc": "Erects absolute cryptographic defensive shields against unauthorized data interference."
+        },
+        {
+          "name": "Rational Synthesis",
+          "desc": "Instantly manufactures essential replacement parts and field supplies via molecular reconstruction."
+        }
+      ]
+    }
+  ]
+}
