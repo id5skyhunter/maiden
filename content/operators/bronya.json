@@ -2,6 +2,7 @@
   "id": "bronya",
   "name": "BRONYA",
   "subtitle": "Office Strategic Executive & High-Complexity Management Maid",
+  "status": "Busy",
   "rating": 4.8,
   "ratingCount": 1410,
   "favorites": 5980200,
@@ -10,61 +11,62 @@
       "versionId": "ol",
       "versionName": "Executive",
       "code": "BUNNY-014C",
+      "status": "Busy",
       "affiliation": "Hyperion",
       "price": 12499,
       "image": "assets/images/BRONYA-OL.png",
       "boxImage": "assets/images/BRONYA-OL.png",
-      "quote": "Head Developer of E.T. Studio.",
-      "description": "Excel on All Tech-based information management, but gaming is her priority",
+      "quote": "Quote placeholder here.",
+      "description": "Description placeholder here.",
       "stats": {
-        "str": 82,
-        "agi": 86,
-        "int": 99,
-        "pwr": 85,
-        "def": 95,
-        "sync": 99
+        "str": 209,
+        "agi": 219,
+        "int": 252,
+        "pwr": 217,
+        "def": 242,
+        "sync": 252
       },
       "cv": {
-        "learningModel": "Protocol One",
-        "generation": "2nd",
-        "activationDate": "2024-05-01",
+        "learningModel": "Learning model placeholder here",
+        "generation": "Generation placeholder here",
+        "activationDate": "2024-01-01",
         "specializations": [
-          "Strategic Resource Allocation",
-          "Autonomous Financial Modeling",
-          "Quantum Data Defense"
+          "Specialization placeholder 1 here",
+          "Specialization placeholder 2 here",
+          "Specialization placeholder 3 here"
         ],
         "workExperience": [
           {
-            "role": "Head Developer",
-            "org": "E.T. Studio",
+            "role": "Role title placeholder here",
+            "org": "Organization placeholder here",
             "period": "2024 — Present",
-            "desc": "Directing Game development while acquiring other company at her lead."
+            "desc": "Work experience description placeholder here."
           },
           {
-            "role": "Lead Systems Analyst",
-            "org": "Silverwing Digital Systems",
+            "role": "Role title placeholder here",
+            "org": "Organization placeholder here",
             "period": "2023 — 2024",
-            "desc": "Architected sub-second financial reconciliation pipelines and high-security encrypted dossiers."
+            "desc": "Work experience description placeholder here."
           }
         ],
         "certifications": [
-          "Global Enterprise Architecture Master License",
-          "Quantum Security Audit Clearance (Level 5)",
-          "Autonomous Corporate Stewardship License"
+          "Certification name here",
+          "Certification name here",
+          "Certification name here"
         ]
       },
       "abilities": [
         {
-          "name": "Project Bunny Analytics Protocol",
-          "desc": "Processes 100 million simultaneous logistic scenarios to compute optimal strategic outcomes."
+          "name": "Abilities name here",
+          "desc": "Abilities description 1 here"
         },
         {
-          "name": "Cyber-Barrier Firewall Dominion",
-          "desc": "Erects absolute cryptographic defensive shields against unauthorized data interference."
+          "name": "Abilities name here",
+          "desc": "Abilities description 2 here"
         },
         {
-          "name": "Rational Synthesis",
-          "desc": "Instantly manufactures essential replacement parts and field supplies via molecular reconstruction."
+          "name": "Abilities name here",
+          "desc": "Abilities description 3 here"
         }
       ]
     }

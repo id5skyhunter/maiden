@@ -37,10 +37,10 @@
 
             <!-- Card Body -->
             <div class="product-card-body">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; gap: 8px; flex-wrap: wrap;">
                 <span class="product-tag" id="tag-${op.id}">${currentVer.affiliation || currentVer.tag || 'Tactical Division'}</span>
-                <span style="font-size: 0.75rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px;">
-                  <i class="ti ti-heart-filled" style="color: #ec4899;"></i> ${op.favorites.toLocaleString()}
+                <span class="status-pill status-${(currentVer.status || op.status || 'Available').toLowerCase()}" id="status-pill-${op.id}">
+                  <span class="status-dot"></span> ${currentVer.status || op.status || 'Available'}
                 </span>
               </div>
 
@@ -66,12 +66,15 @@
                 </div>
               </div>
 
-              <div class="product-card-actions">
+              <div class="product-card-actions" style="grid-template-columns: 1fr 1fr auto; gap: 6px;">
                 <button class="btn btn-outline btn-sm" onclick="window.DossierModal.open(window.appState.operators.find(o => o.id === '${op.id}'), window.OperatorCatalog.selectedVersions['${op.id}'] || '${currentVer.versionId}')">
                   <i class="ti ti-file-text"></i> Details
                 </button>
                 <button class="btn btn-primary btn-sm" onclick="window.DeployModal.open(window.appState.operators.find(o => o.id === '${op.id}'), window.OperatorCatalog.selectedVersions['${op.id}'] || '${currentVer.versionId}')">
                   <i class="ti ti-rocket"></i> Deploy
+                </button>
+                <button class="btn btn-outline btn-sm" title="Schedule Appointment" onclick="window.AppointmentModal.open(window.appState.operators.find(o => o.id === '${op.id}'), window.OperatorCatalog.selectedVersions['${op.id}'] || '${currentVer.versionId}')">
+                  <i class="ti ti-calendar-event"></i>
                 </button>
               </div>
             </div>
@@ -97,6 +100,13 @@
 
       const tag = card.querySelector(`#tag-${operatorId}`);
       if (tag) tag.textContent = ver.affiliation || 'MAIDEN Division';
+
+      const statusPill = card.querySelector(`#status-pill-${operatorId}`);
+      const st = ver.status || op.status || 'Available';
+      if (statusPill) {
+        statusPill.className = `status-pill status-${st.toLowerCase()}`;
+        statusPill.innerHTML = `<span class="status-dot"></span> ${st}`;
+      }
 
       const subtitle = card.querySelector(`#subtitle-${operatorId}`);
       if (subtitle) subtitle.textContent = `${ver.versionName} — ${ver.code}`;

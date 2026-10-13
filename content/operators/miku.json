@@ -2,6 +2,7 @@
   "id": "miku",
   "name": "MIKU",
   "subtitle": "Global Vocaloid Synthesizer & Cyber-Acoustic Broadcast Diva",
+  "status": "Available",
   "rating": 5.0,
   "ratingCount": 2480,
   "favorites": 9850000,
@@ -10,61 +11,62 @@
       "versionId": "cv01",
       "versionName": "Vocaloid Origin 01",
       "code": "M-VOC-007H",
+      "status": "Available",
       "affiliation": "Crypton Digital Synthesis",
       "price": 10999,
       "image": "assets/images/MIKU.png",
       "boxImage": "assets/images/MIKU.png",
-      "quote": "The sound of the future reaches everyone. Connecting hearts across galaxies through song.",
-      "description": "The legendary pioneer of synthetic acoustic emotion and interstellar holographic broadcasts. Hatsune Miku unites humanity through pristine, multi-octave digital vocals capable of sub-space planetary transmissions and uplifting planetary distress zones.",
+      "quote": "Quote placeholder here.",
+      "description": "Description placeholder here.",
       "stats": {
-        "str": 75,
-        "agi": 91,
-        "int": 95,
-        "pwr": 96,
-        "def": 88,
-        "sync": 100
+        "str": 191,
+        "agi": 232,
+        "int": 242,
+        "pwr": 245,
+        "def": 224,
+        "sync": 255
       },
       "cv": {
-        "learningModel": "Vocaloid Synthesis Engine NT v6.0",
-        "generation": "Original Master Series (CV01)",
-        "activationDate": "2024-08-31",
+        "learningModel": "Learning model placeholder here",
+        "generation": "Generation placeholder here",
+        "activationDate": "2024-01-01",
         "specializations": [
-          "Omni-Channel Cyber Broadcast",
-          "Digital Emotion Synthesization",
-          "Interstellar Hologram Projection"
+          "Specialization placeholder 1 here",
+          "Specialization placeholder 2 here",
+          "Specialization placeholder 3 here"
         ],
         "workExperience": [
           {
-            "role": "Global Cultural Ambassador",
-            "org": "Crypton Digital Synthesis",
+            "role": "Role title placeholder here",
+            "org": "Organization placeholder here",
             "period": "2024 — Present",
-            "desc": "Transmits planetary morale concerts and emergency acoustic solace broadcasts across all orbital hubs."
+            "desc": "Work experience description placeholder here."
           },
           {
-            "role": "Acoustic AI Pioneer Prototype",
-            "org": "Yamaha Sound Synthesis Labs",
+            "role": "Role title placeholder here",
+            "org": "Organization placeholder here",
             "period": "2023 — 2024",
-            "desc": "Calibrated dual twin-tail acoustic receiver antennas and neural pitch synthesis algorithms."
+            "desc": "Work experience description placeholder here."
           }
         ],
         "certifications": [
-          "Universal Diva Class Certification (Rank 01)",
-          "Planetary Acoustic Broadcast Clearance",
-          "Interdimensional Holographic Telemetry Master"
+          "Certification name here",
+          "Certification name here",
+          "Certification name here"
         ]
       },
       "abilities": [
         {
-          "name": "World is Mine Holographic Field",
-          "desc": "Projects hyper-realistic 3D stadium holograms across entire city skylines."
+          "name": "Abilities name here",
+          "desc": "Abilities description 1 here"
         },
         {
-          "name": "Melt Harmonic Cleanse",
-          "desc": "Cancels sonic weapon frequencies and hostile radio static with ultra-pure acoustic counter-waves."
+          "name": "Abilities name here",
+          "desc": "Abilities description 2 here"
         },
         {
-          "name": "Tell Your World Uplink",
-          "desc": "Direct orbital neural broadcast sending comforting melodies to millions simultaneously."
+          "name": "Abilities name here",
+          "desc": "Abilities description 3 here"
         }
       ]
     }

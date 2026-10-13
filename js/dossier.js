@@ -74,6 +74,9 @@
               <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px; flex-wrap: wrap;">
                 <span class="badge badge-primary">${ver.code}</span>
                 <span class="badge badge-outline">${ver.affiliation || ver.tag || "Tactical Division"}</span>
+                <span class="badge ${(ver.status || op.status) === 'Busy' ? 'badge-busy' : 'badge-available'}">
+                  <i class="ti ti-${(ver.status || op.status) === 'Busy' ? 'clock-filled' : 'circle-check-filled'}"></i> ${ver.status || op.status || 'Available'}
+                </span>
                 <span class="rating-badge"><i class="ti ti-star-filled"></i> ${op.rating} / 5.0</span>
                 <span class="favorites-badge"><i class="ti ti-heart-filled"></i> ${op.favorites.toLocaleString()}</span>
               </div>
@@ -95,6 +98,9 @@
                 <button class="btn btn-dark" onclick="window.DossierModal.close(); window.DeployModal.open(window.DossierModal.currentOperator, '${ver.versionId}');">
                   <i class="ti ti-send"></i> Deploy This Operator
                 </button>
+                <button class="btn btn-outline" onclick="window.DossierModal.close(); window.AppointmentModal.open(window.DossierModal.currentOperator, '${ver.versionId}');">
+                  <i class="ti ti-calendar-event"></i> Schedule Appointment
+                </button>
                 <div style="font-weight: 800; font-size: 1.25rem;"><i class="ti ti-diamond"></i> ${ver.price.toLocaleString()}</div>
               </div>
             </div>
@@ -108,33 +114,33 @@
               <p style="color: var(--text-muted); line-height: 1.8;">${ver.description}</p>
             </div>
 
-            <!-- In-Game Stats Bars -->
+            <!-- In-Game Stats Bars (Max Value: 255) -->
             <div>
-              <h4 class="cv-section-title"><i class="ti ti-chart-bar"></i> Combat & Performance Metrics</h4>
+              <h4 class="cv-section-title"><i class="ti ti-chart-bar"></i> Combat & Performance Metrics (Max 255)</h4>
               <div class="stats-bars-grid">
                 <div class="stat-bar-item">
-                  <div class="stat-bar-label"><span>STR (Strength)</span><span>${stats.str || 90}/100</span></div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${stats.str || 90}%;"></div></div>
+                  <div class="stat-bar-label"><span>STR (Strength)</span><span>${stats.str || 210} / 255</span></div>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${Math.min(100, Math.round(((stats.str || 210) / 255) * 100))}%;"></div></div>
                 </div>
                 <div class="stat-bar-item">
-                  <div class="stat-bar-label"><span>AGI (Agility)</span><span>${stats.agi || 90}/100</span></div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${stats.agi || 90}%;"></div></div>
+                  <div class="stat-bar-label"><span>AGI (Agility)</span><span>${stats.agi || 210} / 255</span></div>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${Math.min(100, Math.round(((stats.agi || 210) / 255) * 100))}%;"></div></div>
                 </div>
                 <div class="stat-bar-item">
-                  <div class="stat-bar-label"><span>INT (Intelligence)</span><span>${stats.int || 90}/100</span></div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${stats.int || 90}%;"></div></div>
+                  <div class="stat-bar-label"><span>INT (Intelligence)</span><span>${stats.int || 210} / 255</span></div>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${Math.min(100, Math.round(((stats.int || 210) / 255) * 100))}%;"></div></div>
                 </div>
                 <div class="stat-bar-item">
-                  <div class="stat-bar-label"><span>PWR (Psionic / Firepower)</span><span>${stats.pwr || 90}/100</span></div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${stats.pwr || 90}%;"></div></div>
+                  <div class="stat-bar-label"><span>PWR (Psionic / Firepower)</span><span>${stats.pwr || 210} / 255</span></div>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${Math.min(100, Math.round(((stats.pwr || 210) / 255) * 100))}%;"></div></div>
                 </div>
                 <div class="stat-bar-item">
-                  <div class="stat-bar-label"><span>DEF (Durability & Shield)</span><span>${stats.def || 90}/100</span></div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${stats.def || 90}%;"></div></div>
+                  <div class="stat-bar-label"><span>DEF (Durability & Shield)</span><span>${stats.def || 210} / 255</span></div>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${Math.min(100, Math.round(((stats.def || 210) / 255) * 100))}%;"></div></div>
                 </div>
                 <div class="stat-bar-item">
-                  <div class="stat-bar-label"><span>SYNC (Neural Resonance)</span><span>${stats.sync || 90}/100</span></div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${stats.sync || 90}%;"></div></div>
+                  <div class="stat-bar-label"><span>SYNC (Neural Resonance)</span><span>${stats.sync || 210} / 255</span></div>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${Math.min(100, Math.round(((stats.sync || 210) / 255) * 100))}%;"></div></div>
                 </div>
               </div>
             </div>
@@ -143,6 +149,14 @@
             <div>
               <h4 class="cv-section-title"><i class="ti ti-certificate"></i> Operational CV & Architecture</h4>
               <div class="cv-grid">
+                <div class="cv-card">
+                  <div class="cv-card-label">Operational Status</div>
+                  <div class="cv-card-val">
+                    <span class="status-pill status-${(ver.status || op.status || 'Available').toLowerCase()}">
+                      <span class="status-dot"></span> ${ver.status || op.status || 'Available'}
+                    </span>
+                  </div>
+                </div>
                 <div class="cv-card">
                   <div class="cv-card-label">Neural Learning Model</div>
                   <div class="cv-card-val">${cv.learningModel || 'Core Matrix v9.2'}</div>
@@ -155,7 +169,7 @@
                   <div class="cv-card-label">First Commission Date</div>
                   <div class="cv-card-val">${cv.activationDate || '2024'}</div>
                 </div>
-                <div class="cv-card">
+                <div class="cv-card" style="grid-column: 1 / -1;">
                   <div class="cv-card-label">Primary Specializations</div>
                   <div class="cv-card-val">${(cv.specializations || []).join(' • ')}</div>
                 </div>
@@ -204,9 +218,12 @@
             </div>
 
             <!-- Footer Action -->
-            <div style="text-align: center; padding-top: 16px; border-top: 1px solid var(--border-light);">
+            <div style="display: flex; gap: 12px; justify-content: center; padding-top: 16px; border-top: 1px solid var(--border-light); flex-wrap: wrap;">
               <button class="btn btn-primary btn-lg" onclick="window.DossierModal.close(); window.DeployModal.open(window.DossierModal.currentOperator, '${ver.versionId}');">
-                <i class="ti ti-rocket"></i> Proceed to Deploy ${op.name} (${ver.versionName})
+                <i class="ti ti-rocket"></i> Authorize Deployment
+              </button>
+              <button class="btn btn-outline btn-lg" onclick="window.DossierModal.close(); window.AppointmentModal.open(window.DossierModal.currentOperator, '${ver.versionId}');">
+                <i class="ti ti-calendar-event"></i> Schedule In-Person Appointment
               </button>
             </div>
           </div>

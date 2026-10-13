@@ -2,6 +2,7 @@
   "id": "mei",
   "name": "MEI",
   "subtitle": "Xentinel Tactical Combat & Electromagnetic Dominance Unit",
+  "status": "Available",
   "rating": 4.9,
   "ratingCount": 1640,
   "favorites": 6420500,
@@ -10,61 +11,62 @@
       "versionId": "dk",
       "versionName": "Xentinel",
       "code": "M-XEN-003M",
+      "status": "Available",
       "affiliation": "Hyperion",
       "price": 13999,
       "image": "assets/images/MEI-DK.png",
       "boxImage": "assets/images/MEI-DK.png",
-      "quote": "If saving you is a sin, I will gladly become a sinner. The lightning obeys my command.",
-      "description": "Engineered as an apex vanguard assault combat maiden. Channeling concentrated electromagnetic plasma and magnetic singularity blades, Mei operates as the premier frontline sentinel, defending civic perimeters and neutralising hostile breaches with lightning supremacy.",
+      "quote": "Quote placeholder here.",
+      "description": "Description placeholder here.",
       "stats": {
-        "str": 98,
-        "agi": 97,
-        "int": 93,
-        "pwr": 98,
-        "def": 91,
-        "sync": 96
+        "str": 250,
+        "agi": 247,
+        "int": 237,
+        "pwr": 250,
+        "def": 232,
+        "sync": 245
       },
       "cv": {
-        "learningModel": "Electromagnetic Pulse Core v8.6",
-        "generation": "2nd Generation (Mark II-X)",
-        "activationDate": "2024-04-13",
+        "learningModel": "Learning model placeholder here",
+        "generation": "Generation placeholder here",
+        "activationDate": "2024-01-01",
         "specializations": [
-          "Electromagnetic Blade Mastery",
-          "Aerial Interception",
-          "High-Frequency Plasma Discharge"
+          "Specialization placeholder 1 here",
+          "Specialization placeholder 2 here",
+          "Specialization placeholder 3 here"
         ],
         "workExperience": [
           {
-            "role": "Chief Strike Vanguard",
-            "org": "Xentinel Tactical Division",
+            "role": "Role title placeholder here",
+            "org": "Organization placeholder here",
             "period": "2024 — Present",
-            "desc": "Lead commander of high-threat interception and rapid reactionary counter-strike operations."
+            "desc": "Work experience description placeholder here."
           },
           {
-            "role": "Advanced Combat Field Calibration",
-            "org": "ME-Corp Advanced Armaments",
+            "role": "Role title placeholder here",
+            "org": "Organization placeholder here",
             "period": "2023 — 2024",
-            "desc": "Calibrated dual Kurikara-matrix lightning converters for supersonic kinetic warfare."
+            "desc": "Work experience description placeholder here."
           }
         ],
         "certifications": [
-          "S-Rank Heavy Armament Certification",
-          "High-Yield Electromagnetic Field Safety License",
-          "Fleet-Level Operational Command Clearance"
+          "Certification name here",
+          "Certification name here",
+          "Certification name here"
         ]
       },
       "abilities": [
         {
-          "name": "Thundering Sanction",
-          "desc": "Calls down superheated ionic lightning strikes, disintegrating shields in a 60-meter radius."
+          "name": "Abilities name here",
+          "desc": "Abilities description 1 here"
         },
         {
-          "name": "Kurikara's Tempest",
-          "desc": "Summons resonant dragonic electromagnetic aura to slice through reinforced armored battle-cruisers."
+          "name": "Abilities name here",
+          "desc": "Abilities description 2 here"
         },
         {
-          "name": "Tacheon Edge Flash",
-          "desc": "Unsheathes relativistic blade causing localized space-time shearing."
+          "name": "Abilities name here",
+          "desc": "Abilities description 3 here"
         }
       ]
     }

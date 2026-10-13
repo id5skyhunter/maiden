@@ -2,6 +2,7 @@
   "id": "uzuki",
   "name": "UZUKI",
   "subtitle": "Cinderella Stage Resonance & Open Area Public Performance Maiden",
+  "status": "Available",
   "rating": 4.7,
   "ratingCount": 1150,
   "favorites": 4890000,
@@ -10,61 +11,62 @@
       "versionId": "cs",
       "versionName": "Cinderella Smile",
       "code": "M-IDL-006U",
+      "status": "Available",
       "affiliation": "346 Production Civic Outreach",
       "price": 8999,
       "image": "assets/images/UZUKI.png",
       "boxImage": "assets/images/UZUKI.png",
-      "quote": "I'll do my best with a smile! Let's bring happiness and warmth to everyone's world!",
-      "description": "Designed for open-area civic morale elevation, massive stadium acoustics, and infectious positive energy. Uzuki specializes in high-fidelity vocal projection across wide urban sectors, bringing hope, civic unity, and cultural rejuvenation to recovery zones.",
+      "quote": "Quote placeholder here.",
+      "description": "Description placeholder here.",
       "stats": {
-        "str": 76,
-        "agi": 88,
-        "int": 89,
-        "pwr": 84,
-        "def": 85,
-        "sync": 99
+        "str": 194,
+        "agi": 224,
+        "int": 227,
+        "pwr": 214,
+        "def": 217,
+        "sync": 252
       },
       "cv": {
-        "learningModel": "Acoustic Harmony Core v5.5 (Cinderella Edition)",
-        "generation": "2nd Generation (Cultural Series)",
-        "activationDate": "2024-08-18",
+        "learningModel": "Learning model placeholder here",
+        "generation": "Generation placeholder here",
+        "activationDate": "2024-01-01",
         "specializations": [
-          "Open-Area Stadium Acoustics",
-          "Public Morale Reinforcement",
-          "Synchronized Choreographic Synthesis"
+          "Specialization placeholder 1 here",
+          "Specialization placeholder 2 here",
+          "Specialization placeholder 3 here"
         ],
         "workExperience": [
           {
-            "role": "Public Goodwill Ambassador",
-            "org": "346 Production Civic Outreach",
+            "role": "Role title placeholder here",
+            "org": "Organization placeholder here",
             "period": "2024 — Present",
-            "desc": "Keynote performer for regional reconstruction festivals and open-air morale restoration tours."
+            "desc": "Work experience description placeholder here."
           },
           {
-            "role": "Stage Protocol Tester",
-            "org": "Cinderella Stage Acoustics Lab",
+            "role": "Role title placeholder here",
+            "org": "Organization placeholder here",
             "period": "2023 — 2024",
-            "desc": "Tested harmonic frequency resonance across metropolitan amphitheaters and flood-relief camps."
+            "desc": "Work experience description placeholder here."
           }
         ],
         "certifications": [
-          "Grand Tier Vocalist & Performer License",
-          "Civic Morale Elevation Specialist Accreditation",
-          "Open Area High-Frequency Acoustic Safety Certification"
+          "Certification name here",
+          "Certification name here",
+          "Certification name here"
         ]
       },
       "abilities": [
         {
-          "name": "S.M.I.L.E. Resonance Wave",
-          "desc": "Projects comforting low-frequency acoustic warmth restoring civ morale and mental resilience."
+          "name": "Abilities name here",
+          "desc": "Abilities description 1 here"
         },
         {
-          "name": "Cinderella Stage Illumination",
-          "desc": "Deploys multi-spectrum holographic lighting towers across open-air venues up to 100 meters."
+          "name": "Abilities name here",
+          "desc": "Abilities description 2 here"
         },
         {
-          "name": "Never Say Never Crescendo",
-          "desc": "Overcomes acoustic interference to deliver crystal clear audio during civil emergencies."
+          "name": "Abilities name here",
+          "desc": "Abilities description 3 here"
         }
       ]
     }

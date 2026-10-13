@@ -38,6 +38,7 @@
 
       const op = this.operators[this.currentIndex];
       const ver = this.getActiveVersion(op);
+      const isBusy = (ver.status || op.status) === 'Busy';
       const opIndex = this.currentIndex;
 
       container.innerHTML = `
@@ -47,6 +48,9 @@
             <div class="hero-info">
               <!-- Meta Badges Row -->
               <div class="hero-meta-row">
+                <span class="badge ${isBusy ? 'badge-busy' : 'badge-available'}" id="slideStatusBadge">
+                  <span class="status-dot"></span> ${isBusy ? 'Busy / In Field' : 'Available'}
+                </span>
                 <span class="badge badge-primary"><i class="ti ti-trophy"></i> Top 10 Operator Deployed</span>
                 <span class="badge badge-outline" id="slideCodeBadge">${ver.code}</span>
                 <span class="badge badge-outline" id="slideAffilBadge"><i class="ti ti-shield"></i> ${ver.affiliation || 'MAIDEN Tactical Division'}</span>
@@ -86,13 +90,16 @@
                 <div class="hero-price" id="slidePrice">
                   <i class="ti ti-diamond"></i> ${ver.price.toLocaleString()}
                 </div>
-                <div class="hero-price-note">Credits / Unit</div>
+                <div class="hero-price-note">Credits</div>
               </div>
 
               <!-- Action Buttons -->
               <div class="hero-cta-group">
                 <button type="button" class="btn btn-primary btn-lg" onclick="window.HeroSlider.openDeploy()">
                   <i class="ti ti-rocket"></i> Deploy Operator
+                </button>
+                <button type="button" class="btn btn-outline btn-lg" onclick="window.HeroSlider.openAppointment()">
+                  <i class="ti ti-calendar-event"></i> Schedule Appointment
                 </button>
                 <button type="button" class="btn btn-outline btn-lg" onclick="window.HeroSlider.openDossier()">
                   <i class="ti ti-file-text"></i> Details
@@ -145,6 +152,13 @@
       if (!op) return;
       const vId = this.selectedVersions[op.id];
       if (window.DeployModal) window.DeployModal.open(op, vId);
+    },
+
+    openAppointment() {
+      const op = this.operators[this.currentIndex];
+      if (!op) return;
+      const vId = this.selectedVersions[op.id];
+      if (window.AppointmentModal) window.AppointmentModal.open(op, vId);
     },
 
     openDossier() {
@@ -210,6 +224,14 @@
 
       const codeBadge = document.getElementById('slideCodeBadge');
       if (codeBadge) codeBadge.textContent = ver.code;
+
+      // Update status badge
+      const isBusy = (ver.status || op.status) === 'Busy';
+      const statusBadge = document.getElementById('slideStatusBadge');
+      if (statusBadge) {
+        statusBadge.className = `badge ${isBusy ? 'badge-busy' : 'badge-available'}`;
+        statusBadge.innerHTML = `<span class="status-dot"></span> ${isBusy ? 'Busy / In Field' : 'Available'}`;
+      }
 
       const affilBadge = document.getElementById('slideAffilBadge');
       if (affilBadge) affilBadge.innerHTML = `<i class="ti ti-shield"></i> ${ver.affiliation || 'MAIDEN Tactical Division'}`;

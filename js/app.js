@@ -16,6 +16,7 @@
 
       // Initialize UI Components
       if (window.DeployModal) window.DeployModal.init();
+      if (window.AppointmentModal) window.AppointmentModal.init();
       if (window.DossierModal) window.DossierModal.init();
 
       // Page-specific initialization
@@ -75,6 +76,7 @@
           id: "kiana",
           name: "KIANA",
           subtitle: "Multipurpose Autonomous Maiden",
+          status: "Available",
           rating: 4.5,
           ratingCount: 1283,
           favorites: 7523100,
@@ -83,69 +85,48 @@
               versionId: "dg",
               versionName: "Moon Chanter",
               code: "M-DIV-001X",
-              affiliation: "MAIDEN Tactical Division",
+              status: "Available",
+              affiliation: "Hyperion",
               price: 14999,
               image: "assets/images/kiana-dg.png",
               boxImage: "assets/images/kiana-dg.png",
-              quote: "Ignite the dawn of tomorrow. The flame of humanity never extinguishes.",
-              description: "The premier synthesis under Project MAIDEN. Anchored with high-dimensional Herrscher core matrix, she bends spacetime and emits superluminal psionic radiant flames.",
-              stats: { str: 95, agi: 96, int: 91, pwr: 99, def: 94, sync: 99 },
+              quote: "Quote placeholder here.",
+              description: "Description placeholder here.",
+              stats: { str: 242, agi: 245, int: 232, pwr: 252, def: 240, sync: 252 },
               cv: {
-                learningModel: "Quanta 7.2",
-                generation: "2nd Generation (Mark II)",
-                activationDate: "2024-03-15",
-                specializations: ["Reality Reconfiguration", "Orbital Stabilization", "Psionic Flame Projection"],
-                workExperience: [
-                  {
-                    role: "Space Exploration Supervisor",
-                    org: "MAIDEN Tactical Division",
-                    period: "2024 — Present",
-                    desc: "Lead strike operator for high-priority interdimensional breach containment."
-                  }
-                ],
-                certifications: [
-                  "Herrscher-Class Psionic License (S-Rank)",
-                  "Multi-Dimensional Navigation Clearance",
-                  "Advanced Close Quarters Combat Protocol"
-                ]
+                learningModel: "Learning model placeholder here",
+                generation: "Generation placeholder here",
+                activationDate: "2024-01-01",
+                specializations: ["Specialization placeholder 1 here", "Specialization placeholder 2 here"],
+                workExperience: [{ role: "Role placeholder", org: "Org placeholder", period: "2024 — Present", desc: "Work experience placeholder." }],
+                certifications: ["Certification name here"]
               },
               abilities: [
-                { name: "Sub-Space Lance Volley", desc: "Deploys 6 micro-wormhole apertures delivering relativistic kinetic hyper-projectiles." },
-                { name: "Corona Flare Dominion", desc: "Ignites high-frequency divine flame shield, neutralizing 99.4% energy bombardment." }
+                { name: "Abilities name here", desc: "Abilities description 1 here" }
               ]
             },
             {
               versionId: "wb",
               versionName: "Wintery Wishes",
               code: "M-DROID-002B",
-              affiliation: "MAIDEN Domestic Operations",
+              status: "Available",
+              affiliation: "Hyperion",
               price: 8499,
               image: "assets/images/kiana-wb.png",
               boxImage: "assets/images/kiana-wb.png",
-              quote: "Master, operational parameters loaded. Tactical protocol White Blossom initiated.",
-              description: "Engineered for high-tempo executive security and combat maid hospitality. Features dual sub-micro turbine thrusters and an adaptive neural personality emulator.",
-              stats: { str: 88, agi: 95, int: 92, pwr: 86, def: 89, sync: 99 },
+              quote: "Quote placeholder here.",
+              description: "Description placeholder here.",
+              stats: { str: 224, agi: 242, int: 235, pwr: 219, def: 227, sync: 252 },
               cv: {
-                learningModel: "Neural Empathy Engine v7.4",
-                generation: "2nd Generation (Mark II-B)",
-                activationDate: "2024-06-22",
-                specializations: ["Executive Protection", "Combat Hospitality Protocol", "Adaptive Personality Emulation"],
-                workExperience: [
-                  {
-                    role: "Executive Security & Hospitality Maid",
-                    org: "MAIDEN Domestic Operations",
-                    period: "2024 — Present",
-                    desc: "Primary operator for VIP protection detail with integrated hospitality services."
-                  }
-                ],
-                certifications: [
-                  "Graphene Armor Integration License",
-                  "Adaptive Personality Framework Certified"
-                ]
+                learningModel: "Learning model placeholder here",
+                generation: "Generation placeholder here",
+                activationDate: "2024-01-01",
+                specializations: ["Specialization placeholder 1 here", "Specialization placeholder 2 here"],
+                workExperience: [{ role: "Role placeholder", org: "Org placeholder", period: "2024 — Present", desc: "Work experience placeholder." }],
+                certifications: ["Certification name here"]
               },
               abilities: [
-                { name: "Neko-Curtsy EMP Strike", desc: "Discharges high-density ionic wave disabling enemy cyber-implants within 35 meters." },
-                { name: "Graphene Apron Deflector", desc: "Nanotech kinetic absorption mesh absorbs heavy ballistic rounds." }
+                { name: "Abilities name here", desc: "Abilities description 1 here" }
               ]
             }
           ]
