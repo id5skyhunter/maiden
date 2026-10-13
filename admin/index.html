@@ -3,22 +3,1389 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MAIDEN CMS // Autonomous Entity Command Portal</title>
+  <title>MAIDEN // Static Admin & Entity Command Showcase</title>
   <link rel="icon" type="image/svg+xml" href="../assets/images/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  
   <style>
-    body {
+    :root {
+      --bg-dark: #080a0f;
+      --bg-surface: #0f1420;
+      --bg-card: #151c2d;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(59, 130, 246, 0.4);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --accent: #ec4899;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --font-display: 'Orbitron', monospace;
+      --font-tech: 'Rajdhani', sans-serif;
+      --font-ui: 'Inter', -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: #090c10;
-      color: #e6edf3;
-      font-family: 'Rajdhani', -apple-system, sans-serif;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-ui);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Command Header */
+    .admin-header {
+      background: rgba(15, 20, 32, 0.95);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 1.5px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .brand-badge {
+      font-family: var(--font-tech);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-tech);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    .nav-btn.primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .nav-btn.primary:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Main Layout */
+    .admin-layout {
+      display: flex;
+      flex: 1;
+    }
+
+    /* Sidebar */
+    .admin-sidebar {
+      width: 250px;
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-subtle);
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-section-title {
+      font-family: var(--font-tech);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      padding: 8px 12px;
+      margin-top: 12px;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-family: var(--font-tech);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+      user-select: none;
+    }
+
+    .sidebar-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+    }
+
+    .sidebar-item.active {
+      background: rgba(59, 130, 246, 0.12);
+      border-color: rgba(59, 130, 246, 0.35);
+      color: #fff;
+    }
+
+    .sidebar-item i {
+      font-size: 1.2rem;
+    }
+
+    /* Main Content Area */
+    .admin-main {
+      flex: 1;
+      padding: 28px 36px;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Showcase Alert Banner */
+    .showcase-banner {
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.12), rgba(236, 72, 153, 0.12));
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .showcase-banner-text {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .showcase-banner-text i {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .showcase-banner h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .showcase-banner p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Metric Cards Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .metric-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-family: var(--font-tech);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .metric-val {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .metric-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* Status Pills */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-family: var(--font-tech);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .status-available {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+
+    .status-busy {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 6px currentColor;
+    }
+
+    /* Section Panels */
+    .admin-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 28px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .panel-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panel-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Search & Filter Controls */
+    .search-input {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      color: #fff;
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      outline: none;
+      width: 220px;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    /* Tables */
+    .data-table-wrap {
+      overflow-x: auto;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .data-table th {
+      font-family: var(--font-tech);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      vertical-align: middle;
+    }
+
+    .data-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .op-avatar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .op-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      background: #000;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .op-info h5 {
+      font-family: var(--font-tech);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .op-info span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Quick Action Button inside Table */
+    .btn-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-tech);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-action:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* Modal / Inspector */
+    .admin-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .admin-modal.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-surface);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 840px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: var(--bg-surface);
+      z-index: 2;
+    }
+
+    .modal-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: #fff;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: #fff;
+    }
+
+    .modal-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-family: var(--font-tech);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+    }
+
+    .form-control {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      color: #fff;
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* Stats Inputs Grid (Max 255) */
+    .stats-form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      background: var(--bg-card);
+      padding: 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .stat-input-box {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-input-box label {
+      font-family: var(--font-tech);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .stat-input-box span {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      background: rgba(15, 20, 32, 0.95);
+      position: sticky;
+      bottom: 0;
+      z-index: 2;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e293b;
+      border: 1px solid var(--primary);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-tech);
+      font-size: 1rem;
+      font-weight: 600;
+      z-index: 2000;
+    }
+
+    .toast.show {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .admin-layout {
+        flex-direction: column;
+      }
+      .admin-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+        flex-direction: row;
+        overflow-x: auto;
+      }
+      .sidebar-section-title {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Sveltia CMS: Modern Git-based Static CMS for GitHub Pages without server requirements -->
-  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+
+  <!-- Top Command Bar -->
+  <header class="admin-header">
+    <div class="brand-wrap">
+      <img src="../assets/images/logo.png" alt="MAIDEN Logo" class="brand-logo">
+      <div>
+        <span class="brand-title">MAIDEN</span>
+        <span class="brand-badge">Static Showcase Admin</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <a href="../index.html" class="nav-btn">
+        <i class="ti ti-arrow-left"></i> Main Terminal
+      </a>
+      <a href="../operators.html" class="nav-btn">
+        <i class="ti ti-users"></i> Catalog
+      </a>
+      <a href="https://github.com/id5skyhunter/maiden" target="_blank" class="nav-btn primary">
+        <i class="ti ti-brand-github"></i> Repository
+      </a>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-section-title">Navigation</div>
+      <div class="sidebar-item active" onclick="switchTab('operatorsTab')">
+        <i class="ti ti-shield"></i> Operators Database
+      </div>
+      <div class="sidebar-item" onclick="switchTab('newsTab')">
+        <i class="ti ti-news"></i> News & Dispatches
+      </div>
+      <div class="sidebar-item" onclick="switchTab('systemTab')">
+        <i class="ti ti-cpu"></i> System Telemetry
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="admin-main">
+      <!-- Showcase Notice Banner -->
+      <div class="showcase-banner">
+        <div class="showcase-banner-text">
+          <i class="ti ti-info-circle"></i>
+          <div>
+            <h4>Autonomous Entity Command Portal (Static Showcase)</h4>
+            <p>GitHub Pages static showcase mode. Inspect operator profiles, modify parameters, simulate combat stats (max 255), and export JSON schemas instantly without OAuth hurdles.</p>
+          </div>
+        </div>
+        <button class="nav-btn primary" onclick="exportAllOperatorsJson()">
+          <i class="ti ti-download"></i> Export All JSON
+        </button>
+      </div>
+
+      <!-- Telemetry Metrics Grid -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-card-header">
+            <span>Total Units</span>
+            <i class="ti ti-users"></i>
+          </div>
+          <div class="metric-val" id="metricTotal">7</div>
+          <div class="metric-sub">Active autonomous maiden models</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-card-header">
+            <span>Available for Dispatch</span>
+            <i class="ti ti-circle-check"></i>
+          </div>
+          <div class="metric-val" id="metricAvailable" style="color: var(--success);">5</div>
+          <div class="metric-sub">Ready for tactical assignment</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-card-header">
+            <span>In Field / Busy</span>
+            <i class="ti ti-clock-pause"></i>
+          </div>
+          <div class="metric-val" id="metricBusy" style="color: var(--warning);">2</div>
+          <div class="metric-sub">Engaged in active operations</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-card-header">
+            <span>Max Combat Stats</span>
+            <i class="ti ti-chart-bar"></i>
+          </div>
+          <div class="metric-val">255</div>
+          <div class="metric-sub">8-bit high-resonance scale</div>
+        </div>
+      </div>
+
+      <!-- TAB 1: Operator Database Panel -->
+      <div id="operatorsTab" class="admin-tab-content">
+        <div class="admin-panel">
+          <div class="panel-header">
+            <h3 class="panel-title"><i class="ti ti-shield-check"></i> Operator Registry & Parameter Tuning</h3>
+            <div class="panel-actions">
+              <input type="text" class="search-input" id="operatorSearch" placeholder="Search by name, version, affiliation..." oninput="filterOperators(this.value)">
+            </div>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Operator & Persona</th>
+                  <th>Affiliation</th>
+                  <th>Model Code</th>
+                  <th>Credits</th>
+                  <th>Status</th>
+                  <th>RPG Stats (Max 255)</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="operatorsTableBody">
+                <!-- Dynamically populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: News & Dispatches Panel -->
+      <div id="newsTab" class="admin-tab-content" style="display: none;">
+        <div class="admin-panel">
+          <div class="panel-header">
+            <h3 class="panel-title"><i class="ti ti-news"></i> Official Dispatches & Releases</h3>
+          </div>
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th>Author</th>
+                  <th>Read Time</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="newsTableBody">
+                <!-- Dynamically populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: System Telemetry Panel -->
+      <div id="systemTab" class="admin-tab-content" style="display: none;">
+        <div class="admin-panel">
+          <div class="panel-header">
+            <h3 class="panel-title"><i class="ti ti-cpu"></i> Project MAIDEN Telemetry Specifications</h3>
+          </div>
+          <div style="color: var(--text-muted); line-height: 1.8; font-size: 0.95rem;">
+            <p><strong>Deployment Mode:</strong> Static GitHub Pages Showcase (No server, zero backend dependencies).</p>
+            <p><strong>Operator JSON Directory:</strong> <code>content/operators/*.json</code></p>
+            <p><strong>News JSON Directory:</strong> <code>content/posts/*.json</code></p>
+            <p><strong>RPG Metric Standards:</strong> Scale calibrated to <code>1 - 255</code> max value for STR, AGI, INT, PWR, DEF, and SYNC.</p>
+            <p><strong>Currency:</strong> Diamond Credits (Universal MAIDEN Requisition Units).</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Operator Inspector / Editor Modal -->
+  <div class="admin-modal" id="editModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modalOperatorName">Inspect Operator Parameters</h3>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Operator ID</label>
+            <input type="text" id="editId" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label>Operator Name</label>
+            <input type="text" id="editName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Version Name</label>
+            <input type="text" id="editVersionName" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Model Code</label>
+            <input type="text" id="editCode" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Affiliation</label>
+            <input type="text" id="editAffiliation" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Operational Status</label>
+            <select id="editStatus" class="form-control">
+              <option value="Available">Available</option>
+              <option value="Busy">Busy (In Field)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Credits Price</label>
+            <input type="number" id="editPrice" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Motto / Quote</label>
+          <input type="text" id="editQuote" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>Overview & Profile Description</label>
+          <textarea id="editDescription" class="form-control"></textarea>
+        </div>
+
+        <!-- RPG Stats (Max 255) -->
+        <div class="form-group">
+          <label>Combat & Performance Metrics (Max 255)</label>
+          <div class="stats-form-grid">
+            <div class="stat-input-box">
+              <label>STR <span id="valStr">240</span>/255</label>
+              <input type="range" id="statStr" min="1" max="255" value="240" oninput="document.getElementById('valStr').innerText=this.value">
+            </div>
+            <div class="stat-input-box">
+              <label>AGI <span id="valAgi">240</span>/255</label>
+              <input type="range" id="statAgi" min="1" max="255" value="240" oninput="document.getElementById('valAgi').innerText=this.value">
+            </div>
+            <div class="stat-input-box">
+              <label>INT <span id="valInt">240</span>/255</label>
+              <input type="range" id="valIntDisp">240</span>/255</label>
+              <input type="range" id="statInt" min="1" max="255" value="240" oninput="document.getElementById('valInt').innerText=this.value">
+            </div>
+            <div class="stat-input-box">
+              <label>PWR <span id="valPwr">240</span>/255</label>
+              <input type="range" id="statPwr" min="1" max="255" value="240" oninput="document.getElementById('valPwr').innerText=this.value">
+            </div>
+            <div class="stat-input-box">
+              <label>DEF <span id="valDef">240</span>/255</label>
+              <input type="range" id="statDef" min="1" max="255" value="240" oninput="document.getElementById('valDef').innerText=this.value">
+            </div>
+            <div class="stat-input-box">
+              <label>SYNC <span id="valSync">250</span>/255</label>
+              <input type="range" id="statSync" min="1" max="255" value="250" oninput="document.getElementById('valSync').innerText=this.value">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>JSON Schema Preview</label>
+          <textarea id="jsonPreview" class="form-control" style="font-family: monospace; font-size: 0.8rem; height: 130px;" readonly></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="nav-btn" onclick="copyEditedJson()"><i class="ti ti-copy"></i> Copy JSON</button>
+        <button class="nav-btn primary" onclick="applyShowcaseChanges()"><i class="ti ti-check"></i> Apply to Showcase</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="ti ti-check"></i> <span id="toastMsg">Action completed successfully</span>
+  </div>
+
+  <script>
+    // Embedded Operator Dataset (Matches Content Files)
+    let operators = [
+      {
+        id: "kiana",
+        name: "KIANA",
+        subtitle: "Multipurpose Autonomous Maiden",
+        status: "Available",
+        rating: 4.5,
+        ratingCount: 1283,
+        favorites: 7523100,
+        versions: [
+          {
+            versionId: "dg",
+            versionName: "Moon Chanter",
+            code: "M-DIV-001X",
+            status: "Available",
+            affiliation: "Hyperion",
+            price: 14999,
+            image: "../assets/images/kiana-dg.png",
+            quote: "Quote placeholder here.",
+            description: "Description placeholder here.",
+            stats: { str: 242, agi: 245, int: 232, pwr: 252, def: 240, sync: 252 }
+          },
+          {
+            versionId: "wb",
+            versionName: "Wintery Wishes",
+            code: "M-DROID-002B",
+            status: "Available",
+            affiliation: "Hyperion",
+            price: 8499,
+            image: "../assets/images/kiana-wb.png",
+            quote: "Quote placeholder here.",
+            description: "Description placeholder here.",
+            stats: { str: 224, agi: 242, int: 235, pwr: 219, def: 227, sync: 252 }
+          }
+        ]
+      },
+      {
+        id: "mei",
+        name: "MEI",
+        subtitle: "Multipurpose Autonomous Maiden",
+        status: "Available",
+        rating: 4.8,
+        ratingCount: 1420,
+        favorites: 8120000,
+        versions: [
+          {
+            versionId: "dk",
+            versionName: "Xentinel",
+            code: "M-DIV-003M",
+            status: "Available",
+            affiliation: "Hyperion",
+            price: 13999,
+            image: "../assets/images/MEI-DK.png",
+            quote: "Quote placeholder here.",
+            description: "Description placeholder here.",
+            stats: { str: 250, agi: 247, int: 237, pwr: 250, def: 232, sync: 245 }
+          }
+        ]
+      },
+      {
+        id: "bronya",
+        name: "BRONYA",
+        subtitle: "Multipurpose Autonomous Maiden",
+        status: "Busy",
+        rating: 4.7,
+        ratingCount: 1150,
+        favorites: 6940000,
+        versions: [
+          {
+            versionId: "ol",
+            versionName: "Executive",
+            code: "M-DROID-004B",
+            status: "Busy",
+            affiliation: "Hyperion",
+            price: 12499,
+            image: "../assets/images/BRONYA-OL.png",
+            quote: "Quote placeholder here.",
+            description: "Description placeholder here.",
+            stats: { str: 209, agi: 219, int: 252, pwr: 217, def: 242, sync: 252 }
+          }
+        ]
+      },
+      {
+        id: "seele",
+        name: "SEELE",
+        subtitle: "Multipurpose Autonomous Maiden",
+        status: "Available",
+        rating: 4.6,
+        ratingCount: 980,
+        favorites: 5820000,
+        versions: [
+          {
+            versionId: "ad",
+            versionName: "Panacea Rebirth",
+            code: "M-RELIEF-005S",
+            status: "Available",
+            affiliation: "Humanitarian Relief Corps",
+            price: 9999,
+            image: "../assets/images/SEELE-AD.png",
+            quote: "Quote placeholder here.",
+            description: "Description placeholder here.",
+            stats: { str: 217, agi: 237, int: 245, pwr: 235, def: 237, sync: 252 }
+          }
+        ]
+      },
+      {
+        id: "uzuki",
+        name: "UZUKI",
+        subtitle: "Multipurpose Autonomous Maiden",
+        status: "Available",
+        rating: 4.4,
+        ratingCount: 760,
+        favorites: 4210000,
+        versions: [
+          {
+            versionId: "cs",
+            versionName: "Cinderella Smile",
+            code: "M-CIVIC-006U",
+            status: "Available",
+            affiliation: "346 Production Civic Outreach",
+            price: 8999,
+            image: "../assets/images/UZUKI.png",
+            quote: "Quote placeholder here.",
+            description: "Description placeholder here.",
+            stats: { str: 194, agi: 224, int: 227, pwr: 214, def: 217, sync: 252 }
+          }
+        ]
+      },
+      {
+        id: "miku",
+        name: "HATSUNE MIKU",
+        subtitle: "Multipurpose Autonomous Maiden",
+        status: "Available",
+        rating: 4.9,
+        ratingCount: 2300,
+        favorites: 12400000,
+        versions: [
+          {
+            versionId: "vo",
+            versionName: "Vocaloid Origin 01",
+            code: "M-DIGITAL-007M",
+            status: "Available",
+            affiliation: "Crypton Digital Synthesis",
+            price: 10999,
+            image: "../assets/images/MIKU.png",
+            quote: "Quote placeholder here.",
+            description: "Description placeholder here.",
+            stats: { str: 191, agi: 232, int: 242, pwr: 245, def: 224, sync: 255 }
+          }
+        ]
+      },
+      {
+        id: "mobius",
+        name: "MOBIUS",
+        subtitle: "Multipurpose Autonomous Maiden",
+        status: "Busy",
+        rating: 4.8,
+        ratingCount: 1350,
+        favorites: 7100000,
+        versions: [
+          {
+            versionId: "ob",
+            versionName: "Ouroboros Evolution",
+            code: "M-BIO-008M",
+            status: "Busy",
+            affiliation: "Realm of Ouroboros Bio-Lab",
+            price: 13499,
+            image: "../assets/images/MOBIUS.png",
+            quote: "Quote placeholder here.",
+            description: "Description placeholder here.",
+            stats: { str: 227, agi: 240, int: 252, pwr: 247, def: 235, sync: 250 }
+          }
+        ]
+      }
+    ];
+
+    let newsArticles = [
+      {
+        title: "Kiana Mark II Firmware & Spatial Warp Protocols Online",
+        category: "Product Update",
+        date: "2026-03-24",
+        author: "MAIDEN Engineering Div",
+        readTime: "4 min read"
+      },
+      {
+        title: "Relief Division Initiative: Deploying Medical Droids to Crisis Sectors",
+        category: "Press Release",
+        date: "2026-03-18",
+        author: "MAIDEN Public Relations",
+        readTime: "3 min read"
+      },
+      {
+        title: "'Make it Real' — Keynote Address & 2026 Entity Roadmap",
+        category: "Vision & Keynote",
+        date: "2026-03-01",
+        author: "Dr. Otto Apocalypse",
+        readTime: "6 min read"
+      }
+    ];
+
+    let currentEditing = null;
+
+    // Initialize Admin
+    function init() {
+      // Try to fetch latest operators from disk if on local server
+      fetch('../content/operators/kiana.json')
+        .then(r => r.json())
+        .then(data => {
+          // Live load successful
+        })
+        .catch(() => {
+          // Running on static pages or offline - uses rich embedded dataset
+        });
+
+      renderOperators();
+      renderNews();
+      updateMetrics();
+    }
+
+    function renderOperators(filter = '') {
+      const tbody = document.getElementById('operatorsTableBody');
+      const q = filter.toLowerCase();
+
+      tbody.innerHTML = operators.map(op => {
+        return op.versions.map(ver => {
+          const match = op.name.toLowerCase().includes(q) ||
+                        ver.versionName.toLowerCase().includes(q) ||
+                        (ver.affiliation || '').toLowerCase().includes(q);
+          if (filter && !match) return '';
+
+          const isBusy = (ver.status || op.status) === 'Busy';
+          const stats = ver.stats || {};
+          const avgStat = Math.round(((stats.str || 210) + (stats.agi || 210) + (stats.int || 210) + (stats.pwr || 210) + (stats.def || 210) + (stats.sync || 210)) / 6);
+
+          return `
+            <tr>
+              <td>
+                <div class="op-avatar-wrap">
+                  <img src="${ver.image}" alt="${op.name}" class="op-avatar" onerror="this.src='../assets/images/logo.png'">
+                  <div class="op-info">
+                    <h5>${op.name}</h5>
+                    <span>${ver.versionName}</span>
+                  </div>
+                </div>
+              </td>
+              <td>${ver.affiliation || 'Hyperion'}</td>
+              <td><code>${ver.code}</code></td>
+              <td><strong><i class="ti ti-diamond"></i> ${ver.price.toLocaleString()}</strong></td>
+              <td>
+                <span class="status-pill ${isBusy ? 'status-busy' : 'status-available'}">
+                  <span class="status-dot"></span> ${isBusy ? 'Busy' : 'Available'}
+                </span>
+              </td>
+              <td>
+                <div style="font-family: var(--font-tech); font-weight: 700;">
+                  Avg <strong>${avgStat}</strong> / 255
+                </div>
+              </td>
+              <td>
+                <button class="btn-action" onclick="openInspector('${op.id}', '${ver.versionId}')">
+                  <i class="ti ti-edit"></i> Inspect / Edit
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }).join('');
+    }
+
+    function renderNews() {
+      const tbody = document.getElementById('newsTableBody');
+      tbody.innerHTML = newsArticles.map(art => `
+        <tr>
+          <td><strong>${art.title}</strong></td>
+          <td><span class="brand-badge">${art.category}</span></td>
+          <td>${art.date}</td>
+          <td>${art.author}</td>
+          <td>${art.readTime}</td>
+          <td>
+            <button class="btn-action" onclick="showToast('Dispatch article is active and verified')">
+              <i class="ti ti-check"></i> Verified
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function updateMetrics() {
+      let total = 0;
+      let avail = 0;
+      let busy = 0;
+
+      operators.forEach(op => {
+        op.versions.forEach(v => {
+          total++;
+          if ((v.status || op.status) === 'Busy') busy++;
+          else avail++;
+        });
+      });
+
+      document.getElementById('metricTotal').innerText = total;
+      document.getElementById('metricAvailable').innerText = avail;
+      document.getElementById('metricBusy').innerText = busy;
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.admin-tab-content').forEach(el => el.style.display = 'none');
+      document.getElementById(tabId).style.display = 'block';
+
+      document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
+      const activeItem = Array.from(document.querySelectorAll('.sidebar-item')).find(el => el.getAttribute('onclick').includes(tabId));
+      if (activeItem) activeItem.classList.add('active');
+    }
+
+    function filterOperators(val) {
+      renderOperators(val);
+    }
+
+    function openInspector(opId, vId) {
+      const op = operators.find(o => o.id === opId);
+      if (!op) return;
+      const ver = op.versions.find(v => v.versionId === vId) || op.versions[0];
+      if (!ver) return;
+
+      currentEditing = { op, ver };
+
+      document.getElementById('modalOperatorName').innerText = `${op.name} (${ver.versionName}) — Parameter Inspector`;
+      document.getElementById('editId').value = op.id;
+      document.getElementById('editName').value = op.name;
+      document.getElementById('editVersionName').value = ver.versionName;
+      document.getElementById('editCode').value = ver.code;
+      document.getElementById('editAffiliation').value = ver.affiliation || 'Hyperion';
+      document.getElementById('editStatus').value = ver.status || op.status || 'Available';
+      document.getElementById('editPrice').value = ver.price;
+      document.getElementById('editQuote').value = ver.quote;
+      document.getElementById('editDescription').value = ver.description;
+
+      const stats = ver.stats || { str: 240, agi: 240, int: 240, pwr: 240, def: 240, sync: 250 };
+      document.getElementById('statStr').value = stats.str || 240;
+      document.getElementById('valStr').innerText = stats.str || 240;
+      document.getElementById('statAgi').value = stats.agi || 240;
+      document.getElementById('valAgi').innerText = stats.agi || 240;
+      document.getElementById('statInt').value = stats.int || 240;
+      document.getElementById('valInt').innerText = stats.int || 240;
+      document.getElementById('statPwr').value = stats.pwr || 240;
+      document.getElementById('valPwr').innerText = stats.pwr || 240;
+      document.getElementById('statDef').value = stats.def || 240;
+      document.getElementById('valDef').innerText = stats.def || 240;
+      document.getElementById('statSync').value = stats.sync || 250;
+      document.getElementById('valSync').innerText = stats.sync || 250;
+
+      updateJsonPreview();
+      document.getElementById('editModal').classList.add('active');
+    }
+
+    function updateJsonPreview() {
+      if (!currentEditing) return;
+      const { op, ver } = currentEditing;
+
+      const obj = {
+        id: op.id,
+        name: document.getElementById('editName').value,
+        subtitle: op.subtitle,
+        status: document.getElementById('editStatus').value,
+        rating: op.rating,
+        versions: op.versions.map(v => {
+          if (v.versionId === ver.versionId) {
+            return {
+              ...v,
+              versionName: document.getElementById('editVersionName').value,
+              code: document.getElementById('editCode').value,
+              affiliation: document.getElementById('editAffiliation').value,
+              status: document.getElementById('editStatus').value,
+              price: parseInt(document.getElementById('editPrice').value) || v.price,
+              quote: document.getElementById('editQuote').value,
+              description: document.getElementById('editDescription').value,
+              stats: {
+                str: parseInt(document.getElementById('statStr').value),
+                agi: parseInt(document.getElementById('statAgi').value),
+                int: parseInt(document.getElementById('statInt').value),
+                pwr: parseInt(document.getElementById('statPwr').value),
+                def: parseInt(document.getElementById('statDef').value),
+                sync: parseInt(document.getElementById('statSync').value)
+              }
+            };
+          }
+          return v;
+        })
+      };
+
+      document.getElementById('jsonPreview').value = JSON.stringify(obj, null, 2);
+    }
+
+    function applyShowcaseChanges() {
+      if (!currentEditing) return;
+      const { op, ver } = currentEditing;
+
+      ver.versionName = document.getElementById('editVersionName').value;
+      ver.code = document.getElementById('editCode').value;
+      ver.affiliation = document.getElementById('editAffiliation').value;
+      ver.status = document.getElementById('editStatus').value;
+      op.status = ver.status;
+      ver.price = parseInt(document.getElementById('editPrice').value) || ver.price;
+      ver.quote = document.getElementById('editQuote').value;
+      ver.description = document.getElementById('editDescription').value;
+      ver.stats = {
+        str: parseInt(document.getElementById('statStr').value),
+        agi: parseInt(document.getElementById('statAgi').value),
+        int: parseInt(document.getElementById('statInt').value),
+        pwr: parseInt(document.getElementById('statPwr').value),
+        def: parseInt(document.getElementById('statDef').value),
+        sync: parseInt(document.getElementById('statSync').value)
+      };
+
+      closeModal();
+      renderOperators();
+      updateMetrics();
+      showToast(`Updated parameters for ${op.name} (${ver.versionName}) in showcase!`);
+    }
+
+    function copyEditedJson() {
+      updateJsonPreview();
+      const txt = document.getElementById('jsonPreview').value;
+      navigator.clipboard.writeText(txt).then(() => {
+        showToast('JSON schema copied to clipboard!');
+      });
+    }
+
+    function exportAllOperatorsJson() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(operators, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "maiden_operators_export.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast('Exported maiden_operators_export.json successfully!');
+    }
+
+    function closeModal() {
+      document.getElementById('editModal').classList.remove('active');
+      currentEditing = null;
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
+    }
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
 </body>
 </html>

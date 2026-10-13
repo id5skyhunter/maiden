@@ -2,7 +2,7 @@ backend:
   name: github
   repo: id5skyhunter/maiden
   branch: main
-  base_url: https://id5skyhunter.github.io/maiden/
+  auth_methods: [token]
 
 media_folder: "assets/images"
 public_folder: "assets/images"
@@ -19,6 +19,7 @@ collections:
       - { label: "Operator ID", name: "id", widget: "string" }
       - { label: "Operator Name", name: "name", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Overall Status", name: "status", widget: "select", options: ["Available", "Busy"], default: "Available" }
       - { label: "Average Rating (out of 5)", name: "rating", widget: "number", value_type: "float", default: 4.5 }
       - { label: "Rating Count", name: "ratingCount", widget: "number", value_type: "int", default: 1200 }
       - { label: "Favorites Count", name: "favorites", widget: "number", value_type: "int", default: 523100 }
@@ -29,22 +30,24 @@ collections:
           - { label: "Version ID (e.g. dg, wb)", name: "versionId", widget: "string" }
           - { label: "Version Name", name: "versionName", widget: "string" }
           - { label: "Model Code", name: "code", widget: "string" }
+          - { label: "Version Status", name: "status", widget: "select", options: ["Available", "Busy"], default: "Available" }
+          - { label: "Affiliation", name: "affiliation", widget: "string", default: "Hyperion" }
           - { label: "Tag / Persona Style", name: "tag", widget: "string", default: "Tactical" }
-          - { label: "Acquisition Price ($ or Credits)", name: "price", widget: "number", value_type: "int" }
+          - { label: "Acquisition Price (Credits)", name: "price", widget: "number", value_type: "int" }
           - { label: "Character Cutout Image", name: "image", widget: "image" }
           - { label: "Box / Packaging Image", name: "boxImage", widget: "image" }
           - { label: "Quote / Motto", name: "quote", widget: "string" }
           - { label: "Overview & Description", name: "description", widget: "text" }
-          - label: "RPG Combat Stats"
+          - label: "RPG Combat Stats (Max 255)"
             name: "stats"
             widget: "object"
             fields:
-              - { label: "STR", name: "str", widget: "number", default: 90 }
-              - { label: "AGI", name: "agi", widget: "number", default: 90 }
-              - { label: "INT", name: "int", widget: "number", default: 90 }
-              - { label: "PWR", name: "pwr", widget: "number", default: 90 }
-              - { label: "DEF", name: "def", widget: "number", default: 90 }
-              - { label: "SYNC", name: "sync", widget: "number", default: 90 }
+              - { label: "STR", name: "str", widget: "number", min: 1, max: 255, default: 240 }
+              - { label: "AGI", name: "agi", widget: "number", min: 1, max: 255, default: 240 }
+              - { label: "INT", name: "int", widget: "number", min: 1, max: 255, default: 240 }
+              - { label: "PWR", name: "pwr", widget: "number", min: 1, max: 255, default: 240 }
+              - { label: "DEF", name: "def", widget: "number", min: 1, max: 255, default: 240 }
+              - { label: "SYNC", name: "sync", widget: "number", min: 1, max: 255, default: 250 }
           - label: "CV & Dossier Credentials"
             name: "cv"
             widget: "object"
